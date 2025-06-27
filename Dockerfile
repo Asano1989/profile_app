@@ -10,6 +10,9 @@ COPY Gemfile Gemfile.lock /profile_app/
 # bundle installを実行
 RUN bundle install
 
+# watchmanのインストール（2025/06/27追記）
+RUN apt-get update -qq && apt-get install -y watchman
+
 # ホストのファイルをコンテナ内の作業ディレクトリにコピー
 COPY . /profile_app/
 
