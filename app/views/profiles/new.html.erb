@@ -3,64 +3,44 @@
 
   <%= form_with model: @profile, local: true  do |form| %>
 
-  <p><%= form.label :name %>  <%= form.text_field :name %>
+  <p>わたしの<%= form.label :name %>は <%= form.text_field :name %> です！</p>
+
+  <p>まわりの人たちからは<%= form.label :nickname %> <%= form.text_field :nickname %> って呼ばれています。</p>
+
+  <p><%= form.label :constellation %>は <%= form.select :constellation, options_for_select(['おひつじ座', 'おうし座', 'ふたご座', 'かに座', 'しし座', 'おとめ座', 'てんびん座', 'さそり座', 'いて座', 'やぎ座', 'みずがめ座', 'うお座', 'わからない', 'ヒミツ']) %> 🌠</p>
+
+  <p><%= form.label :birthplace %>は <%= form.select :birthplace, options_for_select(['北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県', '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', '岐阜県', '静岡県', '愛知県', '三重県', '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県', '鳥取県', '島根県', '岡山県', '広島県', '山口県', '徳島県', '香川県', '愛媛県', '高知県', '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県', '海外', 'ヒミツ']) %> だよ！</p>
+
+  <p>わたしの<%= form.label :personality_main %>は <%= form.text_field :personality_main %> で <%= form.label :personality_sub %><%= form.text_field :personality_sub %> だと思っています✨
   </p>
 
-  <p><%= form.label :nickname %>  <%= form.text_field :nickname %>
-  </p>
+  <p><%= form.label :evaluation_others %> <%= form.text_field :evaluation_others %> って言われることがあるよ。</p>
 
-  <p><%= form.label :constellation %>  <%= form.select :constellation, options_for_select(['おひつじ座', 'おうし座', 'ふたご座', 'かに座', 'しし座', 'おとめ座', 'てんびん座', 'さそり座', 'いて座', 'やぎ座', 'みずがめ座', 'うお座', 'わからない', 'ヒミツ']) %>
-  </p>
+  <p><%= form.label :hobby_or_interest %>は <%= form.text_field :hobby_or_interest %> 。</p>
 
-  <p><%= form.label :birthplace %>  <%= form.select :birthplace, options_for_select(['北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県', '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', '岐阜県', '静岡県', '愛知県', '三重県', '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県', '鳥取県', '島根県', '岡山県', '広島県', '山口県', '徳島県', '香川県', '愛媛県', '高知県', '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県', '海外', 'ヒミツ']) %>
-  </p>
+  <p><%= form.label :favorite_food %>は <%= form.text_field :favorite_food %> 🍙</p>
 
-  <p><%= form.label :personality_main %>  <%= form.text_field :personality_main %>
-  </p>
+  <p><%= form.label :favorite_drink %>は <%= form.text_field :favorite_drink %> ☕</p>
 
-  <p><%= form.label :personality_sub %>  <%= form.text_field :personality_sub %>
-  </p>
+  <p><%= form.label :favorite_artist %>は <%= form.text_field :favorite_artist %> 🖼</p>
 
-  <p><%= form.label :evaluation_others %>  <%= form.text_field :evaluation_others %>
-  </p>
+  <p><%= form.label :favorite_book %>は <%= form.text_field :favorite_book %> 📚</p>
 
-  <p><%= form.label :hobby_or_interest %>  <%= form.text_field :hobby_or_interest %>
-  </p>
+  <p><%= form.label :favorite_movie %>は <%= form.text_field :favorite_movie %> 🎬</p>
 
-  <p><%= form.label :favorite_food %>  <%= form.text_field :favorite_food %>
-  </p>
+  <p><%= form.label :favorite_place %>は <%= form.text_field :favorite_place %> 🌳</p>
 
-  <p><%= form.label :favorite_drink %>  <%= form.text_field :favorite_drink %>
-  </p>
+  <p>わたしの<%= form.label :special_skill %>は <%= form.text_field :special_skill %> です！</p>
 
-  <p><%= form.label :favorite_artist %>  <%= form.text_field :favorite_artist %>
-  </p>
+  <p>今<%= form.label :things_i_want %>は <%= form.text_field :things_i_want %> 。</p>
 
-  <p><%= form.label :favorite_book %>  <%= form.text_field :favorite_book %>
-  </p>
+  <p><%= form.label :future_dream %>は <%= form.text_field :future_dream %> ことなんだ✨</p>
 
-  <p><%= form.label :favorite_movie %>  <%= form.text_field :favorite_movie %>
-  </p>
+  <p><%= form.label :motto %>は <%= form.text_field :motto %>。 </p>
 
-  <p><%= form.label :favorite_place %>  <%= form.text_field :favorite_place %>
-  </p>
+  <p>最後に<%= form.label :free_message %><br><%= form.text_area :free_message %></p>
 
-  <p><%= form.label :special_skill %>  <%= form.text_field :special_skill %>
-  </p>
-
-  <p><%= form.label :things_i_want %>  <%= form.text_field :things_i_want %>
-  </p>
-
-  <p><%= form.label :future_dream %>  <%= form.text_field :future_dream %>
-  </p>
-
-  <p><%= form.label :motto %>  <%= form.text_field :motto %>
-  </p>
-
-  <p><%= form.label :free_message %>  <%= form.text_area :free_message %>
-  </p>
-
-  <p><%= form.submit class: "px-8 py-3 font-semibold rounded-full dark:bg-gray-800 dark:text-gray-100" %>
+  <p><%= form.submit class: "px-8 py-3 font-semibold rounded-full bg-violet-300" %>
   </p>
 
   <% end %>

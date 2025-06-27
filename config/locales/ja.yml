@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    attributes:
+      profile:
+        name: 名前
+        nickname: ''
+        constellation: 星座
+        birthplace: 出身地
+        personality_main: 性格
+        personality_sub: ''
+        evaluation_others: 人からは
+        hobby_or_interest: 趣味・マイブーム
+        favorite_food: 好きな食べもの
+        favorite_drink: 好きな飲みもの
+        favorite_artist: 好きなアーティスト
+        favorite_book: 好きな本・まんが
+        favorite_movie: 好きな映画
+        favorite_place: 好きな場所
+        special_skill: 特技
+        things_i_want: ほしいもの
+        future_dream: 将来の夢
+        motto: 座右の銘・好きな言葉
+        free_message: メッセージ
+  helpers:
+    submit:
+      create: プロフィールを作成する
+      submit: 保存
+      update: 更新
