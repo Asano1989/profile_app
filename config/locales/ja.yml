@@ -3,7 +3,9 @@ ja:
     attributes:
       profile:
         name: 名前
-        nickname: ''
+        nickname: まわりの人たちからは
+        birth_month: ''
+        birth_day: 誕生日
         constellation: 星座
         birthplace: 出身地
         personality_main: 性格
@@ -22,7 +24,30 @@ ja:
         motto: 座右の銘・好きな言葉
         free_message: メッセージ
   helpers:
+    placeholder:
+      profile:
+        name: あなたの名前
+        nickname: ニックネーム
+        birth_month: 月を選択
+        birth_day: 日を選択
+        constellation: 星座を選択
+        birthplace: 出身地を選択
+        personality_main: 性格1
+        personality_sub: 性格2
+        evaluation_others: 人からの評価
+        hobby_or_interest: 趣味・マイブーム
+        favorite_food: 好きな食べもの
+        favorite_drink: 好きな飲みもの
+        favorite_artist: 好きなアーティスト
+        favorite_book: 好きな本・まんが
+        favorite_movie: 好きな映画
+        favorite_place: 好きな場所
+        special_skill: 特技
+        things_i_want: ほしいもの
+        future_dream: 将来の夢
+        motto: 座右の銘・好きな言葉
+        free_message: 自由にメッセージを書いてね✨
     submit:
-      create: プロフィールを作成する
+      create: ✨ プロフィールを作成する ✨
       submit: 保存
       update: 更新

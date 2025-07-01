@@ -7,8 +7,10 @@ class CreateProfiles < ActiveRecord::Migration[7.2]
       t.string :sns_x_id
       t.string :sns_instagram_id
       t.string :sns_facebook_id
-      t.string :constellation, null: false, default: 'ヒミツ'
-      t.string :birthplace, null: false, default: 'ヒミツ'
+      t.integer :birth_month
+      t.integer :birth_day
+      t.string :constellation
+      t.string :birthplace
       t.string :personality_main
       t.string :personality_sub
       t.string :evaluation_others

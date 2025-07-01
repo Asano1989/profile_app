@@ -1,47 +1,315 @@
-<div>
-  <h1 class="font-bold text-4xl">プロフィール作成フォーム</h1>
+<div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-4">
+  <!-- 装飾的な背景要素 -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-10 left-10 text-pink-300 opacity-60">
+      <span class="text-2xl">⭐</span>
+    </div>
+    <div class="absolute top-20 right-20 text-purple-300 opacity-60">
+      <span class="text-xl">💖</span>
+    </div>
+    <div class="absolute top-40 left-1/4 text-pink-300 opacity-40">
+      <span class="text-base">✨</span>
+    </div>
+    <div class="absolute top-60 right-1/3 text-purple-300 opacity-50">
+      <span class="text-lg">🌙</span>
+    </div>
+    <div class="absolute bottom-40 left-20 text-pink-300 opacity-60">
+      <span class="text-xl">☀️</span>
+    </div>
+    <div class="absolute bottom-20 right-10 text-purple-300 opacity-40">
+      <span class="text-xl">⭐</span>
+    </div>
+  </div>
 
-  <%= form_with model: @profile, local: true  do |form| %>
+  <div class="max-w-2xl mx-auto relative z-10">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+        ✨ プロフィール作成 ✨
+      </h1>
+      <div class="flex justify-center gap-2 text-2xl">
+        <span class="text-pink-400">💖</span>
+        <span class="text-purple-400">✨</span>
+        <span class="text-pink-400">💖</span>
+      </div>
+    </div>
 
-  <p>わたしの<%= form.label :name %>は <%= form.text_field :name %> です！</p>
+    <div class="backdrop-blur-sm bg-white/80 border-0 shadow-xl rounded-3xl">
+      <div class="text-center pb-6 pt-8">
+        <h2 class="text-2xl text-purple-700 flex items-center justify-center gap-2">
+          <span class="text-pink-500">⭐</span>
+          あなたのことを教えてね
+          <span class="text-pink-500">⭐</span>
+        </h2>
+      </div>
+      
+      <div class="space-y-8 p-8">
+        <%= form_with model: @profile, local: true, class: "space-y-8" do |form| %>
+          <!-- 名前 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">💖</span>
+              <span>わたしの<%= form.label :name %>は</span>
+            </div>
+            <%= form.text_field :name, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center text-lg py-6 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.name') %>
+            <div class="text-center text-purple-600">です！</div>
+          </div>
 
-  <p>まわりの人たちからは<%= form.label :nickname %> <%= form.text_field :nickname %> って呼ばれています。</p>
+          <!-- ニックネーム -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">✨</span>
+              <span><%= form.label :nickname %></span>
+            </div>
+            <%= form.text_field :nickname, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center text-lg py-6 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.nickname') %>
+            <div class="text-center text-purple-600">って呼ばれています。</div>
+          </div>
 
-  <p><%= form.label :constellation %>は <%= form.select :constellation, options_for_select(['おひつじ座', 'おうし座', 'ふたご座', 'かに座', 'しし座', 'おとめ座', 'てんびん座', 'さそり座', 'いて座', 'やぎ座', 'みずがめ座', 'うお座', 'わからない', 'ヒミツ']) %> 🌠</p>
+          <!-- 誕生日 -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">⭐</span>
+              <span><%= form.label :birth_day %>は</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <%= form.select :birth_month, 
+                    options_for_select((1..12).map { |i| ["#{i}月", i] }), 
+                    { prompt: t('helpers.placeholder.profile.birth_month') }, 
+                    { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
+              </div>
+              <div>
+                <%= form.select :birth_day, 
+                    options_for_select((1..31).map { |i| ["#{i}日", i] }), 
+                    { prompt: t('helpers.placeholder.profile.birth_day') }, 
+                    { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
+              </div>
+            </div>
+            <div class="text-center text-purple-600">だよ！</div>
+          </div>
 
-  <p><%= form.label :birthplace %>は <%= form.select :birthplace, options_for_select(['北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県', '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', '岐阜県', '静岡県', '愛知県', '三重県', '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県', '鳥取県', '島根県', '岡山県', '広島県', '山口県', '徳島県', '香川県', '愛媛県', '高知県', '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県', '海外', 'ヒミツ']) %> だよ！</p>
+          <!-- 星座 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">🌙</span>
+              <span><%= form.label :constellation %>は</span>
+            </div>
+            <%= form.select :constellation, 
+                options_for_select([
+                  ["おひつじ座", "おひつじ座"],
+                  ["おうし座", "おうし座"],
+                  ["ふたご座", "ふたご座"],
+                  ["かに座", "かに座"],
+                  ["しし座", "しし座"],
+                  ["おとめ座", "おとめ座"],
+                  ["てんびん座", "てんびん座"],
+                  ["さそり座", "さそり座"],
+                  ["いて座", "いて座"],
+                  ["やぎ座", "やぎ座"],
+                  ["みずがめ座", "みずがめ座"],
+                  ["うお座", "うお座"],
+                  ["わからない", "わからない"],
+                  ["ヒミツ", "ヒミツ"]
+                ]), 
+                { prompt: t('helpers.placeholder.profile.constellation') }, 
+                { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
+          </div>
 
-  <p>わたしの<%= form.label :personality_main %>は <%= form.text_field :personality_main %> で <%= form.label :personality_sub %><%= form.text_field :personality_sub %> だと思っています✨
-  </p>
+          <!-- 出身地 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">☀️</span>
+              <span><%= form.label :birthplace %>は</span>
+            </div>
+            <%= form.select :birthplace, 
+                options_for_select([
+                  ["北海道", "北海道"], ["青森県", "青森県"], ["岩手県", "岩手県"], ["宮城県", "宮城県"],
+                  ["秋田県", "秋田県"], ["山形県", "山形県"], ["福島県", "福島県"], ["茨城県", "茨城県"],
+                  ["栃木県", "栃木県"], ["群馬県", "群馬県"], ["埼玉県", "埼玉県"], ["千葉県", "千葉県"],
+                  ["東京都", "東京都"], ["神奈川県", "神奈川県"], ["新潟県", "新潟県"], ["富山県", "富山県"],
+                  ["石川県", "石川県"], ["福井県", "福井県"], ["山梨県", "山梨県"], ["長野県", "長野県"],
+                  ["岐阜県", "岐阜県"], ["静岡県", "静岡県"], ["愛知県", "愛知県"], ["三重県", "三重県"],
+                  ["滋賀県", "滋賀県"], ["京都府", "京都府"], ["大阪府", "大阪府"], ["兵庫県", "兵庫県"],
+                  ["奈良県", "奈良県"], ["和歌山県", "和歌山県"], ["鳥取県", "鳥取県"], ["島根県", "島根県"],
+                  ["岡山県", "岡山県"], ["広島県", "広島県"], ["山口県", "山口県"], ["徳島県", "徳島県"],
+                  ["香川県", "香川県"], ["愛媛県", "愛媛県"], ["高知県", "高知県"], ["福岡県", "福岡県"],
+                  ["佐賀県", "佐賀県"], ["長崎県", "長崎県"], ["熊本県", "熊本県"], ["大分県", "大分県"],
+                  ["宮崎県", "宮崎県"], ["鹿児島県", "鹿児島県"], ["沖縄県", "沖縄県"], ["海外", "海外"],
+                  ["ヒミツ", "ヒミツ"]
+                ]), 
+                { prompt: t('helpers.placeholder.profile.birthplace') }, 
+                { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
+          </div>
 
-  <p><%= form.label :evaluation_others %> <%= form.text_field :evaluation_others %> って言われることがあるよ。</p>
+          <!-- 性格 -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">💖</span>
+              <span>わたしの<%= form.label :personality_main %>は</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <%= form.text_field :personality_main, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.personality_main') %>
+              <%= form.text_field :personality_sub, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.personality_sub') %>
+            </div>
+            <div class="text-center text-purple-600">だと思っています✨</div>
+          </div>
 
-  <p><%= form.label :hobby_or_interest %>は <%= form.text_field :hobby_or_interest %> 。</p>
+          <!-- 人からの評価 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">✨</span>
+              <span><%= form.label :evaluation_others %></span>
+            </div>
+            <%= form.text_field :evaluation_others, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.evaluation_others') %>
+            <div class="text-center text-purple-600">って言われることがあるよ。</div>
+          </div>
 
-  <p><%= form.label :favorite_food %>は <%= form.text_field :favorite_food %> 🍙</p>
+          <!-- 趣味・マイブーム -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">⭐</span>
+              <span><%= form.label :hobby_or_interest %>は</span>
+            </div>
+            <%= form.text_field :hobby_or_interest, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.hobby_or_interest') %>
+          </div>
 
-  <p><%= form.label :favorite_drink %>は <%= form.text_field :favorite_drink %> ☕</p>
+          <!-- 好きなもの -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-3">
+              <label class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= form.label :favorite_food %></span> 🍙
+              </label>
+              <%= form.text_field :favorite_food, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.favorite_food') %>
+            </div>
+            <div class="space-y-3">
+              <label class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= form.label :favorite_drink %></span> ☕
+              </label>
+              <%= form.text_field :favorite_drink, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.favorite_drink') %>
+            </div>
+            <div class="space-y-3">
+              <label class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= form.label :favorite_artist %></span> 🖼
+              </label>
+              <%= form.text_field :favorite_artist, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.favorite_artist') %>
+            </div>
+            <div class="space-y-3">
+              <label class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= form.label :favorite_book %></span> 📚
+              </label>
+              <%= form.text_field :favorite_book, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.favorite_book') %>
+            </div>
+            <div class="space-y-3">
+              <label class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= form.label :favorite_movie %></span> 🎬
+              </label>
+              <%= form.text_field :favorite_movie, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.favorite_movie') %>
+            </div>
+            <div class="space-y-3">
+              <label class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= form.label :favorite_place %></span> 🌳
+              </label>
+              <%= form.text_field :favorite_place, 
+                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                  placeholder: t('helpers.placeholder.profile.favorite_place') %>
+            </div>
+          </div>
 
-  <p><%= form.label :favorite_artist %>は <%= form.text_field :favorite_artist %> 🖼</p>
+          <!-- 特技 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">💖</span>
+              <span>わたしの<%= form.label :special_skill %>は</span>
+            </div>
+            <%= form.text_field :special_skill, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.special_skill') %>
+            <div class="text-center text-purple-600">です！</div>
+          </div>
 
-  <p><%= form.label :favorite_book %>は <%= form.text_field :favorite_book %> 📚</p>
+          <!-- ほしいもの -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">✨</span>
+              <span>今<%= form.label :things_i_want %>は</span>
+            </div>
+            <%= form.text_field :things_i_want, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.things_i_want') %>
+          </div>
 
-  <p><%= form.label :favorite_movie %>は <%= form.text_field :favorite_movie %> 🎬</p>
+          <!-- 将来の夢 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">⭐</span>
+              <span><%= form.label :future_dream %>は</span>
+            </div>
+            <%= form.text_field :future_dream, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.future_dream') %>
+          </div>
 
-  <p><%= form.label :favorite_place %>は <%= form.text_field :favorite_place %> 🌳</p>
+          <!-- 座右の銘 -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">🌙</span>
+              <span><%= form.label :motto %>は</span>
+            </div>
+            <%= form.text_field :motto, 
+                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.motto') %>
+          </div>
 
-  <p>わたしの<%= form.label :special_skill %>は <%= form.text_field :special_skill %> です！</p>
+          <!-- メッセージ -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-purple-700 font-medium">
+              <span class="text-pink-500">💖</span>
+              <span>最後に<%= form.label :free_message %></span>
+            </div>
+            <%= form.text_area :free_message, 
+                class: "w-full rounded-2xl border-2 border-pink-200 focus:border-purple-400 bg-white/70 min-h-[120px] resize-none py-4 px-4 focus:outline-none focus:ring-0", 
+                placeholder: t('helpers.placeholder.profile.free_message') %>
+          </div>
 
-  <p>今<%= form.label :things_i_want %>は <%= form.text_field :things_i_want %> 。</p>
+          <!-- 送信ボタン -->
+          <div class="text-center pt-6">
+            <%= form.submit class: "bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 px-12 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 cursor-pointer" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-  <p><%= form.label :future_dream %>は <%= form.text_field :future_dream %> ことなんだ✨</p>
-
-  <p><%= form.label :motto %>は <%= form.text_field :motto %>。 </p>
-
-  <p>最後に<%= form.label :free_message %><br><%= form.text_area :free_message %></p>
-
-  <p><%= form.submit class: "px-8 py-3 font-semibold rounded-full bg-violet-300" %>
-  </p>
-
-  <% end %>
+    <!-- フッター装飾 -->
+    <div class="text-center mt-8 text-purple-600 opacity-70">
+      <div class="flex justify-center gap-2 text-2xl mb-2">
+        <span>⭐</span>
+        <span>💖</span>
+        <span>✨</span>
+        <span>💖</span>
+        <span>⭐</span>
+      </div>
+      <p class="text-sm">あなたらしいプロフィールを作ってね💕</p>
+    </div>
+  </div>
 </div>
