@@ -1,4 +1,9 @@
 class ProfilesController < ApplicationController
+
+  def index
+    @profiles = Profile.all.order('created_at DESC')
+  end
+
   def new
     @profile = Profile.new
   end
@@ -6,7 +11,11 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(post_params)
     @profile.save 
-    redirect_to action: 'pages#home'
+    redirect_to controller: :pages, action: :home
+  end
+
+  def show
+    @profile = Profile.find(params[:id])
   end
 
   private

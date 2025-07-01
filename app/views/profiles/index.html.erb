@@ -1,0 +1,5 @@
+<% @profiles.each do |t| %>
+  <div>
+    <%= link_to "#{t.name}さんのプロフィール", profile_path(t.id) %>
+  </div>
+<% end %>
