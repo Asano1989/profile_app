@@ -1,3 +1,5 @@
+<% content_for(:title, "#{@profile.name}さんのプロフィール" ) %>
+
 <div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-4">
   <!-- 装飾的な背景要素 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none">
@@ -34,7 +36,108 @@
     </div>
 
     <div class="backdrop-blur-sm bg-white/80 border-0 shadow-xl rounded-3xl">
+      <div class="space-y-8 p-8">
+        <!-- 名前 -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span class="text-pink-500">💖</span>
+            <span>わたしの<%= t('activerecord.attributes.profile.name') %>は<%= @profile.name %>です！</span>
+          </div>
+        </div>
 
+        <!-- ニックネーム -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span class="text-pink-500">✨</span>
+            <span><%= t('activerecord.attributes.profile.nickname') %>、<%= @profile.nickname %>って呼ばれています。</span>
+          </div>
+        </div>
+
+        <!-- 誕生日 -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span class="text-pink-500">⭐</span>
+            <span><%= t('activerecord.attributes.profile.birth_day') %>は<%= @profile.birth_month %>月<%= @profile.birth_day %>日だよ！</span>
+
+        <!-- 星座 -->
+            <span><%= t('activerecord.attributes.profile.constellation') %>は<%= @profile.constellation %>💓</span>
+          </div>
+        </div>
+
+        <!-- 出身地 -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span class="text-pink-500">☀️</span>
+            <span><%= t('activerecord.attributes.profile.birthplace') %>は<%= @profile.birthplace %>！</span>
+          </div>
+        </div>
+
+        <!-- 性格 -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span class="text-pink-500">💖</span>
+            <span><%= t('activerecord.attributes.profile.personality_main') %>は<%= @profile.personality_main %>で、<%= @profile.personality_sub %></span>
+            <span>……と、自分では思っているよ😁</span>
+          </div>
+        </div>
+
+        <!-- 人からの評価 -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span class="text-pink-500">✨</span>
+            <span><%= t('activerecord.attributes.profile.evaluation_others') %><%= @profile.evaluation_others %>って言われることがあるよ。</span>
+          </div>
+        </div>
+
+        <!-- 趣味・マイブーム -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span class="text-pink-500">⭐</span>
+            <span><%= t('activerecord.attributes.profile.hobby_or_interest') %>は<%= @profile.hobby_or_interest %>✨</span>
+          </div>
+        </div>
+
+        <!-- 好きなもの -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-3">
+              <div class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= t('activerecord.attributes.profile.favorite_food') %></span> 🍙
+              </div>
+              <%= @profile.favorite_food %>
+            </div>
+            <div class="space-y-3">
+              <div class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= t('activerecord.attributes.profile.favorite_drink') %></span> ☕
+              </div>
+              <%= @profile.favorite_drink %>
+            </div>
+            <div class="space-y-3">
+              <div class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= t('activerecord.attributes.profile.favorite_artist') %></span> 🖼
+              </div>
+              <%= @profile.favorite_artist %>
+            </div>
+            <div class="space-y-3">
+              <div class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= t('activerecord.attributes.profile.favorite_book') %></span> 📚
+              </div>
+              <%= @profile.favorite_book %>
+            </div>
+            <div class="space-y-3">
+              <div class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= t('activerecord.attributes.profile.favorite_movie') %></span> 🎬
+              </div>
+              <%= @profile.favorite_movie %>
+            </div>
+            <div class="space-y-3">
+              <div class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= t('activerecord.attributes.profile.favorite_place') %></span> 🌳
+              </div>
+              <%= @profile.favorite_place %>
+            </div>
+          </div>
+
+      </div>
     </div>
 
 
