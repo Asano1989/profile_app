@@ -151,12 +151,12 @@
               <span>わたしの<%= form.label :personality_main %>は</span>
             </div>
             <div class="grid grid-cols-2 gap-4">
-              <%= form.text_field :personality_main, 
-                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
-                  placeholder: t('helpers.placeholder.profile.personality_main') %>
-              <%= form.text_field :personality_sub, 
-                  class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
-                  placeholder: t('helpers.placeholder.profile.personality_sub') %>
+              <%= form.select :personality_main, 
+                  options_for_select(I18n.t('select_options.profile.personality_main')), { prompt: t('helpers.placeholder.profile.personality_main') },
+                  { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
+              <%= form.select :personality_sub, 
+                  options_for_select(I18n.t('select_options.profile.personality_sub')), { prompt: t('helpers.placeholder.profile.personality_sub') },
+                  { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
             </div>
             <div class="text-center text-purple-600">だと思っています✨</div>
           </div>
@@ -167,9 +167,9 @@
               <span class="text-pink-500">✨</span>
               <span><%= form.label :evaluation_others %></span>
             </div>
-            <%= form.text_field :evaluation_others, 
-                class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
-                placeholder: t('helpers.placeholder.profile.evaluation_others') %>
+            <%= form.select :evaluation_others, 
+                  options_for_select(I18n.t('select_options.profile.evaluation_others')), { prompt: t('helpers.placeholder.profile.evaluation_others') },
+                  { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
             <div class="text-center text-purple-600">って言われることがあるよ。</div>
           </div>
 

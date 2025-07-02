@@ -1,5 +1,11 @@
 <% content_for(:title, "#{@profile.name}さんのプロフィール" ) %>
 
+<% if notice %>
+  <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+
 <div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-4">
   <!-- 装飾的な背景要素 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none">
@@ -89,7 +95,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">💖</span>
-            <span><%= t('activerecord.attributes.profile.personality_main') %>は<%= @profile.personality_main %><% if @profile.personality_main.present? && @profile.personality_sub.present? %>で、<% end %><%= @profile.personality_sub %></span>
+            <span><%= t('activerecord.attributes.profile.personality_main') %>は<%= @profile.personality_main %><% if @profile.personality_main.present? && @profile.personality_sub.present? %>で<% end %><%= @profile.personality_sub %></span>
             <span>……と、自分では思っているよ😁</span>
           </div>
         </div>
@@ -205,7 +211,7 @@
           </div>
         
           <div class="backdrop-blur-sm bg-white-100 border-0 shadow-l rounded-3xl">
-            <div class="text-black-700 font-medium mt-8 whitespace-pre-wrap break-words leading-relaxed">
+            <div class="text-black-700 font-medium p-6 whitespace-pre-wrap break-words leading-relaxed">
               <span><%= @profile.free_message %></span>
             </div>
           </div>
