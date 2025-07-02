@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by(public_uid: params[:id])
   end
 
   private

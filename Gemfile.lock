@@ -153,6 +153,8 @@ GEM
     psych (5.2.6)
       date
       stringio
+    public_uid (2.2.0)
+      activerecord (> 4.2)
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -291,6 +293,7 @@ DEPENDENCIES
   importmap-rails
   jquery-rails
   mysql2 (~> 0.5)
+  public_uid
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
   rubocop
