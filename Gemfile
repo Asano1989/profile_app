@@ -38,6 +38,8 @@ gem "sassc-rails"
 
 gem 'public_uid'
 
+gem 'social-share-button'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
