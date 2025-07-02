@@ -1,8 +1,77 @@
-<div>
-  <h1 class="font-bold text-4xl">ようこそ</h1>
-  <p>「プロフィール帳アプリ」のhomeページです</p>
+<div class="min-h-screen bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200 relative overflow-hidden">
+  <!-- 装飾的な背景要素 -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- 浮遊する装飾アイコン -->
+    <div class="absolute top-16 left-16 text-pink-300 opacity-50 animate-bounce">
+      <span class="text-3xl">🌸</span>
+    </div>
+    <div class="absolute top-32 right-20 text-purple-300 opacity-60 animate-pulse">
+      <span class="text-2xl">💖</span>
+    </div>
+    <div class="absolute top-1/4 left-1/4 text-pink-300 opacity-40 animate-ping">
+      <span class="text-xl">✨</span>
+    </div>
+    <div class="absolute top-1/3 right-1/4 text-purple-300 opacity-50 animate-bounce" style="animation-delay: 0.5s;">
+      <span class="text-2xl">🦄</span>
+    </div>
+    <div class="absolute bottom-1/3 left-20 text-pink-300 opacity-60 animate-pulse" style="animation-delay: 1s;">
+      <span class="text-xl">🌙</span>
+    </div>
+    <div class="absolute bottom-20 right-16 text-purple-300 opacity-40 animate-bounce" style="animation-delay: 1.5s;">
+      <span class="text-2xl">⭐</span>
+    </div>
+    <div class="absolute top-1/2 left-10 text-pink-300 opacity-30 animate-pulse" style="animation-delay: 2s;">
+      <span class="text-lg">🎀</span>
+    </div>
+    <div class="absolute bottom-1/2 right-10 text-purple-300 opacity-50 animate-ping" style="animation-delay: 2.5s;">
+      <span class="text-xl">💫</span>
+    </div>
+  </div>
 
-  <p><%= link_to "プロフィール作成", new_profile_path %></p>
+  <!-- メインコンテンツ -->
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+    <!-- ヘッダー部分 -->
+    <div class="text-center mb-12">
+      <div class="mb-6 animate-bounce">
+        <span class="text-6xl">🌈</span>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent mb-8">
+        プロフィール帳アプリ
+      </h1>
+    </div>
 
-  <p><%= link_to "プロフィール一覧", profiles_path %></p>
+    <!-- メインボタン -->
+    <div class="text-center mb-8">
+      <button onclick="location.href='<%= new_profile_path %>'" 
+          class="bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-xl md:text-2xl py-6 px-12 md:px-16 rounded-[99px] shadow-2xl transform transition-all duration-300 hover:scale-110 hover:shadow-purple-500/25 cursor-pointer border-none outline-none">
+        <span class="flex items-center gap-3 rounded-full">
+          <span class="text-2xl animate-pulse">✨</span>
+          <span>プロフィール作成</span>
+          <span class="text-2xl animate-pulse">✨</span>
+        </span>
+      </button>
+    </div>
+
+
+    <!-- サブリンク -->
+    <div class="text-center">
+      <button onclick="location.href='<%= profiles_path %>'" 
+              class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium text-lg transition-all duration-200 hover:scale-105 cursor-pointer bg-transparent border-none outline-none">
+        <span class="text-sm animate-bounce">👀</span>
+        <span>プロフィール一覧を見る</span>
+        <span class="text-sm transform transition-transform duration-200">→</span>
+      </button>
+    </div>
+
+    <!-- 装飾的な下部要素 -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div class="flex gap-3 text-2xl opacity-60">
+        <span class="animate-bounce text-pink-400">🌸</span>
+        <span class="animate-pulse text-purple-400">💖</span>
+        <span class="animate-ping text-pink-400">✨</span>
+        <span class="animate-pulse text-purple-400">💖</span>
+        <span class="animate-bounce text-pink-400">🌸</span>
+      </div>
+    </div>
+  </div>
 </div>
