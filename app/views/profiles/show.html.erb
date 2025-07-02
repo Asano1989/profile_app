@@ -218,6 +218,15 @@
           </div>
         </div>
         <% end %>
+        
+        <!-- SNSシェアボタン -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium">
+            <span>
+              <%= social_share_button_tag("#{@profile.name}さんのプロフィールです！みんな見てね⭐" + "\n#Webプロフィール帳", url: profile_url(@profile)) %>
+            </span>
+          </div>
+        </div>
 
       </div>
     </div>

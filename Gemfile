@@ -38,6 +38,7 @@ gem "sassc-rails"
 
 gem 'public_uid'
 
+gem 'mini_racer'
 gem 'social-share-button'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

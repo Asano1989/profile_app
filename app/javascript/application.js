@@ -2,5 +2,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+import "social-share-button"
 import "@hotwired/turbo-rails"
 import "controllers"
