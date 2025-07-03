@@ -10,8 +10,9 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(post_params)
     if @profile.save
-      redirect_to profile_path(@profile.public_uid), notice: "#{@profile.name}さんのプロフィールが作成されました。"
+      redirect_to profile_path(@profile.public_uid), success: "#{@profile.name}さんのプロフィールが作成されました"
     else
+      flash.now[:danger] = "プロフィール作成に失敗しました"
       render :new, status: :unprocessable_entity
     end
   end

@@ -1,4 +1,9 @@
-<div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-4">
+<%= render partial: "shared/messages" %>
+
+<%= render partial: "shared/error_messages", locals: { object: @profile } %>
+
+<div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300">
+
   <!-- 装飾的な背景要素 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none">
     <div class="absolute top-10 left-10 text-pink-300 opacity-60">
@@ -48,7 +53,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">💖</span>
-              <span>わたしの<%= form.label :name %>は</span>
+              <span>わたしの<%= t('views.profile.name') %>は</span>
             </div>
             <%= form.text_field :name, 
                 class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center text-lg py-6 px-4 focus:outline-none focus:ring-0", 
@@ -60,7 +65,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">✨</span>
-              <span><%= form.label :nickname %></span>
+              <span><%= t('views.profile.nickname') %></span>
             </div>
             <%= form.text_field :nickname, 
                 class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center text-lg py-6 px-4 focus:outline-none focus:ring-0", 
@@ -72,19 +77,19 @@
           <div class="space-y-4">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">⭐</span>
-              <span><%= form.label :birth_day %>は</span>
+              <span><%= t('views.profile.birth_day') %>は</span>
             </div>
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <%= form.select :birth_month, 
                     options_for_select((1..12).map { |i| ["#{i}月", i] }), 
-                    { prompt: t('helpers.placeholder.profile.birth_month') }, 
+                    { include_blank: t('helpers.placeholder.profile.birth_month'), selected:"" }, 
                     { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
               </div>
               <div>
                 <%= form.select :birth_day, 
                     options_for_select((1..31).map { |i| ["#{i}日", i] }), 
-                    { prompt: t('helpers.placeholder.profile.birth_day') }, 
+                    { include_blank: t('helpers.placeholder.profile.birth_day'), selected:"" }, 
                     { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
               </div>
             </div>
@@ -95,26 +100,11 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">🌙</span>
-              <span><%= form.label :constellation %>は</span>
+              <span><%= t('views.profile.constellation') %>は</span>
             </div>
             <%= form.select :constellation, 
-                options_for_select([
-                  ["おひつじ座", "おひつじ座"],
-                  ["おうし座", "おうし座"],
-                  ["ふたご座", "ふたご座"],
-                  ["かに座", "かに座"],
-                  ["しし座", "しし座"],
-                  ["おとめ座", "おとめ座"],
-                  ["てんびん座", "てんびん座"],
-                  ["さそり座", "さそり座"],
-                  ["いて座", "いて座"],
-                  ["やぎ座", "やぎ座"],
-                  ["みずがめ座", "みずがめ座"],
-                  ["うお座", "うお座"],
-                  ["わからない", "わからない"],
-                  ["ヒミツ", "ヒミツ"]
-                ]), 
-                { prompt: t('helpers.placeholder.profile.constellation') }, 
+                options_for_select(I18n.t('select_options.profile.constellation')), 
+                { include_blank: t('helpers.placeholder.profile.constellation'), selected:"" }, 
                 { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
           </div>
 
@@ -122,25 +112,11 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">☀️</span>
-              <span><%= form.label :birthplace %>は</span>
+              <span><%= t('views.profile.birthplace') %>は</span>
             </div>
             <%= form.select :birthplace, 
-                options_for_select([
-                  ["北海道", "北海道"], ["青森県", "青森県"], ["岩手県", "岩手県"], ["宮城県", "宮城県"],
-                  ["秋田県", "秋田県"], ["山形県", "山形県"], ["福島県", "福島県"], ["茨城県", "茨城県"],
-                  ["栃木県", "栃木県"], ["群馬県", "群馬県"], ["埼玉県", "埼玉県"], ["千葉県", "千葉県"],
-                  ["東京都", "東京都"], ["神奈川県", "神奈川県"], ["新潟県", "新潟県"], ["富山県", "富山県"],
-                  ["石川県", "石川県"], ["福井県", "福井県"], ["山梨県", "山梨県"], ["長野県", "長野県"],
-                  ["岐阜県", "岐阜県"], ["静岡県", "静岡県"], ["愛知県", "愛知県"], ["三重県", "三重県"],
-                  ["滋賀県", "滋賀県"], ["京都府", "京都府"], ["大阪府", "大阪府"], ["兵庫県", "兵庫県"],
-                  ["奈良県", "奈良県"], ["和歌山県", "和歌山県"], ["鳥取県", "鳥取県"], ["島根県", "島根県"],
-                  ["岡山県", "岡山県"], ["広島県", "広島県"], ["山口県", "山口県"], ["徳島県", "徳島県"],
-                  ["香川県", "香川県"], ["愛媛県", "愛媛県"], ["高知県", "高知県"], ["福岡県", "福岡県"],
-                  ["佐賀県", "佐賀県"], ["長崎県", "長崎県"], ["熊本県", "熊本県"], ["大分県", "大分県"],
-                  ["宮崎県", "宮崎県"], ["鹿児島県", "鹿児島県"], ["沖縄県", "沖縄県"], ["海外", "海外"],
-                  ["ヒミツ", "ヒミツ"]
-                ]), 
-                { prompt: t('helpers.placeholder.profile.birthplace') }, 
+                options_for_select(I18n.t('select_options.profile.birthplace')), 
+                { include_blank: t('helpers.placeholder.profile.birthplace'), selected:"" }, 
                 { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
           </div>
 
@@ -148,14 +124,14 @@
           <div class="space-y-4">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">💖</span>
-              <span>わたしの<%= form.label :personality_main %>は</span>
+              <span>わたしの<%= t('views.profile.personality') %>は</span>
             </div>
             <div class="grid grid-cols-2 gap-4">
               <%= form.select :personality_main, 
-                  options_for_select(I18n.t('select_options.profile.personality_main')), { prompt: t('helpers.placeholder.profile.personality_main') },
+                  options_for_select(I18n.t('select_options.profile.personality_main')), { include_blank: t('helpers.placeholder.profile.personality_main'), selected:"" },
                   { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
               <%= form.select :personality_sub, 
-                  options_for_select(I18n.t('select_options.profile.personality_sub')), { prompt: t('helpers.placeholder.profile.personality_sub') },
+                  options_for_select(I18n.t('select_options.profile.personality_sub')), { include_blank: t('helpers.placeholder.profile.personality_sub'), selected:"" },
                   { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
             </div>
             <div class="text-center text-purple-600">だと思っています✨</div>
@@ -165,10 +141,10 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">✨</span>
-              <span><%= form.label :evaluation_others %></span>
+              <span><%= t('views.profile.evaluation_others') %></span>
             </div>
             <%= form.select :evaluation_others, 
-                  options_for_select(I18n.t('select_options.profile.evaluation_others')), { prompt: t('helpers.placeholder.profile.evaluation_others') },
+                  options_for_select(I18n.t('select_options.profile.evaluation_others')), { include_blank: t('helpers.placeholder.profile.evaluation_others'), selected:"" },
                   { class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 py-3 px-4 focus:outline-none focus:ring-0" } %>
             <div class="text-center text-purple-600">って言われることがあるよ。</div>
           </div>
@@ -177,7 +153,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">⭐</span>
-              <span><%= form.label :hobby_or_interest %>は</span>
+              <span><%= t('views.profile.hobby_or_interest') %>は</span>
             </div>
             <%= form.text_field :hobby_or_interest, 
                 class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -188,7 +164,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-3">
               <label class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= form.label :favorite_food %></span> 🍙
+                <span><%= t('views.profile.favorite_food') %></span> 🍙
               </label>
               <%= form.text_field :favorite_food, 
                   class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -196,7 +172,7 @@
             </div>
             <div class="space-y-3">
               <label class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= form.label :favorite_drink %></span> ☕
+                <span><%= t('views.profile.favorite_drink') %></span> ☕
               </label>
               <%= form.text_field :favorite_drink, 
                   class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -204,7 +180,7 @@
             </div>
             <div class="space-y-3">
               <label class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= form.label :favorite_artist %></span> 🖼
+                <span><%= t('views.profile.favorite_artist') %></span> 🖼
               </label>
               <%= form.text_field :favorite_artist, 
                   class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -212,7 +188,7 @@
             </div>
             <div class="space-y-3">
               <label class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= form.label :favorite_book %></span> 📚
+                <span><%= t('views.profile.favorite_book') %></span> 📚
               </label>
               <%= form.text_field :favorite_book, 
                   class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -220,7 +196,7 @@
             </div>
             <div class="space-y-3">
               <label class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= form.label :favorite_movie %></span> 🎬
+                <span><%= t('views.profile.favorite_movie') %></span> 🎬
               </label>
               <%= form.text_field :favorite_movie, 
                   class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -228,7 +204,7 @@
             </div>
             <div class="space-y-3">
               <label class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= form.label :favorite_place %></span> 🌳
+                <span><%= t('views.profile.favorite_place') %></span> 🌳
               </label>
               <%= form.text_field :favorite_place, 
                   class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -240,7 +216,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">💖</span>
-              <span>わたしの<%= form.label :special_skill %>は</span>
+              <span>わたしの<%= t('views.profile.special_skill') %>は</span>
             </div>
             <%= form.text_field :special_skill, 
                 class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -252,7 +228,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">✨</span>
-              <span>今<%= form.label :things_i_want %>は</span>
+              <span>今<%= t('views.profile.things_i_want') %>は</span>
             </div>
             <%= form.text_field :things_i_want, 
                 class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -263,7 +239,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">⭐</span>
-              <span><%= form.label :future_dream %>は</span>
+              <span><%= t('views.profile.future_dream') %>は</span>
             </div>
             <%= form.text_field :future_dream, 
                 class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -274,7 +250,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">🌙</span>
-              <span><%= form.label :motto %>は</span>
+              <span><%= t('views.profile.motto') %>は</span>
             </div>
             <%= form.text_field :motto, 
                 class: "w-full rounded-full border-2 border-pink-200 focus:border-purple-400 bg-white/70 text-center py-3 px-4 focus:outline-none focus:ring-0", 
@@ -285,7 +261,7 @@
           <div class="space-y-3">
             <div class="flex items-center gap-2 text-purple-700 font-medium">
               <span class="text-pink-500">💖</span>
-              <span>最後に<%= form.label :free_message %></span>
+              <span>最後に<%= t('views.profile.free_message') %></span>
             </div>
             <%= form.text_area :free_message, 
                 class: "w-full rounded-2xl border-2 border-pink-200 focus:border-purple-400 bg-white/70 min-h-[120px] resize-none py-4 px-4 focus:outline-none focus:ring-0", 

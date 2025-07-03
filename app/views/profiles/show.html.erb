@@ -1,6 +1,8 @@
 <% content_for(:title, "#{@profile.name}さんのプロフィール" ) %>
 
-<div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-4">
+<%= render partial: "shared/messages" %>
+
+<div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300">
 
   <% if notice %>
   <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
