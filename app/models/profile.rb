@@ -10,11 +10,7 @@ class Profile < ApplicationRecord
   end
     validates :birth_month, format: { with: /\A((1[0-2]|[1-9]))?\z/, message: "は1月〜12月の形式で入力してください" }, allow_blank: true
     validates :birth_day, format: { with: /\A((3[01]|[12][0-9]|[1-9]))?\z/, message: "は1月〜12月の形式で入力してください" }, allow_blank: true
-    # validates :constellation
-    # validates :birthplace
-    # validates :personalty_main
-    # validates :personalty_sub
-    # validates :evaluation_others
+  # constellation, birthplace, personality_main, personality_sub, evaluation_othersにバリデーション設定を付与するならここに記載
   with_options format: { without: NGWORD_REGEX, message: "：4文字以上の繰り返しは禁止です" } do
     with_options length: { maximum: 50, message: "：文字数オーバーです（50文字まで）" } do
       validates :hobby_or_interest
