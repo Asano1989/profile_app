@@ -19,8 +19,10 @@
     <%= javascript_include_tag "social-share-button", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <main class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300">
+  <body class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300">
+    <%= render 'shared/header' %>
+
+    <main class="h-[calc(100vh-6rem)]">
       <%= yield %>
     </main>
   </body>

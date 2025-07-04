@@ -1,6 +1,6 @@
 <%= render partial: "shared/messages" %>
 
-<div class="min-h-screen bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200 relative overflow-hidden">
+<div class="h-full bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200 relative overflow-hidden">
   <!-- 装飾的な背景要素 -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <!-- 浮遊する装飾アイコン -->
@@ -31,12 +31,9 @@
   </div>
 
   <!-- メインコンテンツ -->
-  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+  <div class="h-full relative z-10 flex flex-col items-center justify-center px-4">
     <!-- ヘッダー部分 -->
     <div class="text-center mb-12">
-      <div class="mb-6 animate-bounce">
-        <span class="text-6xl">🌈</span>
-      </div>
       <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent mb-8">
         <%= t('.main_title') %>
       </h1>
