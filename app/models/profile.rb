@@ -1,18 +1,18 @@
 class Profile < ApplicationRecord
   generate_public_uid
 
-  NGWORD_REGEX = /(.)\1{3,}/.freeze
-  with_options format: { without: NGWORD_REGEX, message: "：4文字以上の繰り返しは禁止です" } do
-    with_options length: { maximum: 32, message: "：文字数オーバーです（32文字まで）" } do
+  NGWORD_REGEX = /(.)\1{4,}/.freeze
+  with_options format: { without: NGWORD_REGEX } do
+    with_options length: { maximum: 32 } do
       validates :name, presence: true
       validates :nickname
     end
   end
-    validates :birth_month, format: { with: /\A((1[0-2]|[1-9]))?\z/, message: "は1月〜12月の形式で入力してください" }, allow_blank: true
-    validates :birth_day, format: { with: /\A((3[01]|[12][0-9]|[1-9]))?\z/, message: "は1月〜12月の形式で入力してください" }, allow_blank: true
+    validates :birth_month, format: { with: /\A((1[0-2]|[1-9]))?\z/ }, allow_blank: true
+    validates :birth_day, format: { with: /\A((3[01]|[12][0-9]|[1-9]))?\z/ }, allow_blank: true
   # constellation, birthplace, personality_main, personality_sub, evaluation_othersにバリデーション設定を付与するならここに記載
-  with_options format: { without: NGWORD_REGEX, message: "：4文字以上の繰り返しは禁止です" } do
-    with_options length: { maximum: 50, message: "：文字数オーバーです（50文字まで）" } do
+  with_options format: { without: NGWORD_REGEX } do
+    with_options length: { maximum: 50 } do
       validates :hobby_or_interest
       validates :favorite_food
       validates :favorite_drink
@@ -23,11 +23,11 @@ class Profile < ApplicationRecord
       validates :special_skill
       validates :things_i_want
     end
-    with_options length: { maximum: 80, message: "：文字数オーバーです（80文字まで）" } do
+    with_options length: { maximum: 80 } do
       validates :future_dream
       validates :motto
     end
-    validates :free_message, length: { maximum: 500, message: "：文字数オーバーです（500文字まで）" }
+    validates :free_message, length: { maximum: 300 }
   end
   validate :no_profanity
 

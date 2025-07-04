@@ -28,8 +28,8 @@
 
   <div class="max-w-2xl mx-auto relative z-10">
     <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-        ✨ プロフィール作成 ✨
+      <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
+        <%= t('.main_title') %>
       </h1>
       <div class="flex justify-center gap-2 text-2xl">
         <span class="text-pink-400">💖</span>
@@ -41,9 +41,7 @@
     <div class="backdrop-blur-sm bg-white/80 border-0 shadow-xl rounded-3xl">
       <div class="text-center pb-6 pt-8">
         <h2 class="text-2xl text-purple-700 flex items-center justify-center gap-2">
-          <span class="text-pink-500">⭐</span>
-          あなたのことを教えてね
-          <span class="text-pink-500">⭐</span>
+          <%= t('.tell_me') %>
         </h2>
       </div>
       
@@ -285,7 +283,7 @@
         <span>💖</span>
         <span>⭐</span>
       </div>
-      <p class="text-sm">あなたらしいプロフィールを作ってね💕</p>
+      <p class="text-sm"><%= t('.footer') %></p>
     </div>
   </div>
 </div>

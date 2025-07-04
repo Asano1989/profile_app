@@ -1,5 +1,7 @@
 ja:
   activerecord:
+    models:
+      profile: プロフィール
     attributes:
       profile:
         name: 名前
@@ -24,8 +26,54 @@ ja:
         motto: 座右の銘・好きな言葉
         free_message: メッセージ
     errors:
-      messages:
-        blank: を入力してください
+       models:
+        profile:
+          attributes:
+            name:
+              blank: を入力してください（必須項目）
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません
+            nickname: 
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            birth_month: ：1〜12の値を入力してください（空欄可）
+            birth_day: ：：1〜31の値を入力してください（空欄可）
+            hobby_or_interest:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            favorite_food:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            favorite_drink:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            favorite_artist:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            favorite_book:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            favorite_movie:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            favorite_place:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            special_skill:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            things_i_want:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            future_dream:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            motto:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            free_message:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
   helpers:
     placeholder:
       profile:
@@ -54,6 +102,21 @@ ja:
       create: ✨ プロフィールを作成する ✨
       submit: 保存
       update: 更新
+  pages:
+    home:
+      main_title: ⋆·̩͙✧*Webプロフィール帳٭☾·̩͙⋆
+      create_profile: プロフィールを作成
+      profile_list: プロフィール一覧
+  profiles:
+    new:
+      main_title: ✨ プロフィール作成 ✨
+      tell_me: ⭐ あなたのことを教えてね ⭐
+      footer: あなたらしいプロフィールを作ってね💕
+    show:
+      main_title: "%{name}さんのプロフィール"
+    create:
+      success: "%{name}さんのプロフィールが作成されました"
+      failure: プロフィール作成に失敗しました
   views:
     profile:
         name: 名前
