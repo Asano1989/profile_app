@@ -1,7 +1,21 @@
 <% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>">
-    <ul class="mb-0">
-      <li><%= message %></li>
-    </ul>
-  </div>
+  <% if message_type == 'danger' || message_type == 'failure' %>
+    <div class="alert alert-<%= message_type %> bg-red-100 rounded-lg py-5 px-6 text-base text-red-700" role="alert">
+      <ul class="mb-0">
+        <li><%= message %></li>
+      </ul>
+    </div>
+  <% elsif message_type == 'success' %>
+    <div class="alert alert-<%= message_type %> bg-green-100 rounded-lg py-5 px-6 text-base text-green-700" role="alert">
+      <ul class="mb-0">
+        <li><%= message %></li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="bg-blue-100 rounded-lg py-5 px-6 text-base text-blue-700" role="alert">
+      <ul class="mb-0">
+        <li><%= message %></li>
+      </ul>
+    </div>
+  <% end %>
 <% end %>

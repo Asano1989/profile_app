@@ -1,8 +1,6 @@
-<%= render partial: "shared/messages" %>
-
-<%= render partial: "shared/error_messages", locals: { object: @profile } %>
-
 <div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-4">
+
+  <%= render partial: "shared/error_messages", locals: { object: @profile } %>
 
   <!-- 装飾的な背景要素 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none">

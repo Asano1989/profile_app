@@ -1,1 +1,1 @@
-import "social-share-button"
+import "./social-share-button"

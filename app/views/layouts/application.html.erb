@@ -13,16 +13,18 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <%= javascript_include_tag "social-share-button", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", media: 'all', "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "social-share-button", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "social-share-button", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300">
+  <body class="min-h-screen bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200">
     <%= render 'shared/header' %>
 
-    <main class="h-[calc(100vh-6rem)]">
+    <main class="h-[calc(100vh-4rem)]">
+      <%= render partial: "shared/messages" %>
+
       <%= yield %>
     </main>
   </body>

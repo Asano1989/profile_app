@@ -4,17 +4,35 @@ ARG RUBYGEMS_VERSION=3.3.20
 # 作業ディレクトリを指定
 WORKDIR /profile_app
 
-# ホストのGemfileをコンテナ内の作業ディレクトリにコピー
-COPY Gemfile Gemfile.lock /profile_app/
+# 必要なライブラリのインストール（watchmanなど）
+RUN apt-get update -qq && apt-get install -y \
+  build-essential \
+  libpq-dev \
+  curl \
+  git \
+  watchman
 
-# bundle installを実行
+# Node.js & Yarn のインストール
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+  && apt-get install -y nodejs \
+  && npm install -g yarn
+
+RUN yarn add jquery @popperjs/core
+RUN yarn add @hotwired/stimulus
+
+# package.jsonとyarn.lockを先にコピーしてキャッシュを効かせる
+COPY package.json yarn.lock ./
+RUN yarn install
+
+# GemfileとGemfile.lockを先にコピーしてbundle install
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-# watchmanのインストール（2025/06/27追記）
-RUN apt-get update -qq && apt-get install -y watchman
+# アプリケーション全体をコピー
+COPY . .
 
-# ホストのファイルをコンテナ内の作業ディレクトリにコピー
-COPY . /profile_app/
+# esbuild 出力先ディレクトリを作成（エラー回避）
+RUN mkdir -p app/assets/builds
 
 # entrypoint.shをコンテナ内の作業ディレクトリにコピー
 COPY entrypoint.sh /usr/bin/

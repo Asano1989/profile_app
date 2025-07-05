@@ -117,6 +117,13 @@ ja:
     create:
       success: "%{name}さんのプロフィールが作成されました"
       failure: プロフィール作成に失敗しました
+  header:
+    logo: Webプロフィール帳
+    menu:
+      top: トップページ
+      login: ログイン
+      logout: ログアウト
+      sign_up: ユーザー登録
   views:
     profile:
         name: 名前

@@ -1,4 +1,4 @@
-<header class="h-24 bg-purple-300 shadow-md relative overflow-hidden">
+<header class="h-16 bg-purple-300 shadow-md relative overflow-hidden">
   <!-- 装飾的な背景要素 -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div class="absolute top-2 left-10 text-pink-400 opacity-30 animate-pulse">
@@ -20,34 +20,40 @@
       <!-- ロゴ部分 -->
       <div class="flex items-center gap-2">
         <span class="text-2xl animate-bounce">🌈</span>
-        <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-          プロフィール帳
+        <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-800 to-purple-800 bg-clip-text text-transparent">
+          <%= t('header.logo') %>
         </h1>
       </div>
 
       <!-- ナビゲーションメニュー -->
       <nav class="flex items-center gap-8 md:gap-12">
         <button onclick="location.href='<%= root_path %>'" 
-                class="text-black font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2">
+                class="text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2">
           <span class="text-sm">🏠</span>
-          <span>トップページ</span>
+          <span><%= t('header.menu.top') %></span>
         </button>
         
-        <button onclick="location.href='<%= new_user_session_path %>'" 
-                class="text-black font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2">
-          <span class="text-sm">🔑</span>
-          <span>ログイン</span>
-        </button>
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete,
+              class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2" do %>
+            <span class="text-sm">🚪</span>
+            <span><%= t('header.menu.logout') %></span>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2" do %>
+            <span class="text-sm">🔑</span>
+            <span><%= t('header.menu.login') %></span>
+          <% end %>
 
-        <button onclick="location.href='<%= new_user_registration_path %>'" 
-                class="text-black font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2">
-          <span class="text-sm">👤</span>
-          <span>ユーザー登録</span>
-        </button>
+          <%= link_to new_user_registration_path, class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2" do %>
+            <span class="text-sm">👤</span>
+            <span><%= t('header.menu.sign_up') %></span>
+          <% end %>
+        <% end %>
       </nav>
     </div>
   </div>
 
   <!-- 下部の装飾ライン -->
-  <!-- div class="h-1 bg-gradient-to-r from-transparent via-pink-400 to-transparent opacity-50" /div -->
+  <div class="h-1 bg-gradient-to-r from-transparent via-pink-400 to-transparent opacity-50"></div>
 </header>
