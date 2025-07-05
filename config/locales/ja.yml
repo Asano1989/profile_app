@@ -99,9 +99,14 @@ ja:
         motto: 座右の銘・好きな言葉
         free_message: 自由にメッセージを書いてね✨
     submit:
-      create: ✨ プロフィールを作成する ✨
-      submit: 保存
-      update: 更新
+      profile:
+        create: ✨ プロフィールを作成する ✨
+        submit: 保存
+        update: 更新
+      user:
+        create: ユーザー登録
+        submit: 保存
+        update: 更新
   pages:
     home:
       main_title: ⭐ Webプロフィール帳 ⭐
