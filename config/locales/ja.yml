@@ -143,6 +143,7 @@ ja:
     logo: Webプロフィール帳
     menu:
       top: トップページ
+      about: このサイトについて
       login: ログイン
       logout: ログアウト
       sign_up: ユーザー登録
@@ -171,6 +172,9 @@ ja:
       future_dream: 将来の夢
       motto: 座右の銘・好きな言葉
       free_message: メッセージ
+    about:
+      title: このサイトについて
+      back_home: ホームに戻る
   select_options:
     profile:
       constellation:

@@ -5,23 +5,23 @@
       <!-- ロゴ部分 -->
       <div class="flex items-center gap-2">
         <span class="text-2xl animate-bounce">🌈</span>
-        <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-800 to-purple-800 bg-clip-text text-transparent">
+        <%= link_to root_path, class: "text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-800 to-purple-800 bg-clip-text text-transparent" do %>
           <%= t('header.logo') %>
-        </h1>
+        <% end %>
       </div>
 
       <!-- ナビゲーションメニュー -->
       <nav class="flex items-center gap-6 md:gap-8">
-        <a href="<%= root_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
-          <span class="text-sm">🏠</span>
-          <span><%= t('header.menu.top') %></span>
-        </a>
+        <%= link_to about_path, class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2" do %>
+          <span class="text-sm">📖</span>
+          <span><%= t('header.menu.about') %></span>
+        <% end %>
 
         <% if user_signed_in? %>
-          <a href="<%= profiles_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
+          <%= link_to profiles_path, class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2" do %>
             <span class="text-sm">📜</span>
             <span><%= t('header.menu.profile_list') %></span>
-          </a>
+          <% end %>
 
           <!-- ユーザーメニュードロップダウン -->
           <details class="relative z-50">

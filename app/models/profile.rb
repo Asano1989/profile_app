@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   generate_public_uid
 
   NGWORD_REGEX = /(.)\1{4,}/.freeze
