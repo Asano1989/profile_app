@@ -17,19 +17,16 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y nodejs \
   && npm install -g yarn
 
-RUN yarn add jquery @popperjs/core
-RUN yarn add @hotwired/stimulus
-
 # package.jsonとyarn.lockを先にコピーしてキャッシュを効かせる
 COPY package.json yarn.lock ./
 RUN yarn install
 
+# アプリケーション全体をコピー
+COPY . .
+
 # GemfileとGemfile.lockを先にコピーしてbundle install
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
-
-# アプリケーション全体をコピー
-COPY . .
 
 # esbuild 出力先ディレクトリを作成（エラー回避）
 RUN mkdir -p app/assets/builds

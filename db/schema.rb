@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_05_133130) do
     t.datetime "updated_at", null: false
     t.string "public_uid"
     t.bigint "user_id"
+    t.index ["public_uid"], name: "index_profiles_on_public_uid", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
