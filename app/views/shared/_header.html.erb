@@ -16,7 +16,7 @@
   </div>
 
   <!-- メインコンテナ -->
-  <div class="container mx-auto px-4 h-full relative z-10">
+  <div class="container mx-auto px-4 h-full relative">
     <div class="flex justify-between items-center h-full">
       <!-- ロゴ部分 -->
       <div class="flex items-center gap-2">
@@ -27,67 +27,62 @@
       </div>
 
       <!-- ナビゲーションメニュー -->
-      <nav class="flex items-center gap-6 md:gap-8" data-turbo="false">
-        <%= link_to root_path,
-            class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2" do %>
+      <nav class="flex items-center gap-6 md:gap-8">
+        <a href="<%= root_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
           <span class="text-sm">🏠</span>
           <span><%= t('header.menu.top') %></span>
-        <% end %>
+        </a>
 
         <% if user_signed_in? %>
-          <%= link_to profiles_path,
-              class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2", data: { turbo: false } do %>
+          <a href="<%= profiles_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
             <span class="text-sm">📜</span>
             <span><%= t('header.menu.profile_list') %></span>
-          <% end %>
+          </a>
 
           <!-- ユーザーメニュードロップダウン -->
-            <div class="relative group" data-turbo="false">
-              <!-- トリガー -->
-              <div class="text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 cursor-pointer flex items-center gap-2" data-turbo="false">
-                <span class="text-sm">👤</span>
-                <span>ユーザーメニュー</span>
-                <span class="text-xs">▼</span>
-              </div>
-
-              <!-- ドロップダウンメニュー -->
-              <div class="absolute right-0 top-full mt-2 w-48 backdrop-blur-md bg-white/90 border border-pink-200 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50" data-turbo="false">
-                <div class="py-2" data-turbo="false">
+          <details class="relative z-50">
+            <summary class="text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 cursor-pointer flex items-center gap-2 list-none outline-none">
+              <span class="text-sm">👤</span>
+              <span>ユーザーメニュー</span>
+              <span class="text-xs">▼</span>
+            </summary>
+            
+            <div class="relative">
+              <div class="absolute right-0 top-2 w-48 backdrop-blur-md bg-white/90 border border-pink-200 rounded-2xl shadow-2xl z-50">
+                <div class="py-2">
                   <%= link_to edit_user_registration_path(current_user.id),
-                      class: "no-underline block px-4 py-3 text-purple-800 hover:bg-pink-100/50 hover:text-purple-700 transition duration-200 flex items-center gap-3", data: { turbo: false } do %>
+                      data: { turbo: false },
+                      class: "no-underline block px-4 py-3 text-purple-800 hover:bg-pink-100/50 hover:text-purple-700 transition-all duration-200 flex items-center gap-3" do %>
                     <span class="text-sm">⚙️</span>
                     <span>ユーザー情報</span>
                   <% end %>
-
+                  
                   <div class="border-t border-pink-200 my-1"></div>
-
-                  <%= link_to destroy_user_session_path, method: :delete,
-                      class: "no-underline block px-4 py-3 text-purple-800 hover:bg-pink-100/50 hover:text-purple-700 transition duration-200 flex items-center gap-3", data: { turbo: false } do %>
+                  
+                  <%= link_to destroy_user_session_path,
+                      method: :delete,
+                      data: { turbo: false },
+                      class: "no-underline block px-4 py-3 text-purple-800 hover:bg-pink-100/50 hover:text-purple-700 transition-all duration-200 flex items-center gap-3" do %>
                     <span class="text-sm">🚪</span>
                     <span><%= t('header.menu.logout') %></span>
                   <% end %>
                 </div>
               </div>
             </div>
-
+          </details>
 
         <% else %>
-          <%= link_to new_user_session_path,
-              class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2" do %>
+          <a href="<%= new_user_session_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
             <span class="text-sm">🔑</span>
             <span><%= t('header.menu.login') %></span>
-          <% end %>
+          </a>
           
-          <%= link_to new_user_registration_path,
-              class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2" do %>
+          <a href="<%= new_user_registration_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
             <span class="text-sm">👤</span>
             <span><%= t('header.menu.sign_up') %></span>
-          <% end %>
+          </a>
         <% end %>
       </nav>
     </div>
   </div>
-
-  <!-- 下部の装飾ライン -->
-  <div class="h-1 bg-gradient-to-r from-transparent via-pink-400 to-transparent opacity-50"></div>
 </header>
