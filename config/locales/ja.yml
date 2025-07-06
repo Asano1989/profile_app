@@ -19,6 +19,7 @@ ja:
         favorite_artist: 好きなアーティスト
         favorite_book: 好きな本・まんが
         favorite_movie: 好きな映画
+        favorite_anime_game: 好きなアニメ・ゲーム
         favorite_place: 好きな場所
         special_skill: 特技
         things_i_want: ほしいもの
@@ -54,6 +55,9 @@ ja:
               too_long: "：%{count}文字以内で入力してください"
               invalid: ：5文字以上の繰り返しはできません（空欄可）
             favorite_movie:
+              too_long: "：%{count}文字以内で入力してください"
+              invalid: ：5文字以上の繰り返しはできません（空欄可）
+            favorite_anime_game:
               too_long: "：%{count}文字以内で入力してください"
               invalid: ：5文字以上の繰り返しはできません（空欄可）
             favorite_place:
@@ -93,6 +97,7 @@ ja:
         favorite_book: 好きな本・まんが
         favorite_movie: 好きな映画
         favorite_place: 好きな場所
+        favorite_anime_game: 好きなアニメ・ゲーム
         special_skill: 特技
         things_i_want: ほしいもの
         future_dream: 将来の夢
@@ -102,7 +107,7 @@ ja:
       profile:
         create: ✨ プロフィールを作成する ✨
         submit: 保存
-        update: 更新
+        update: ⭐ プロフィールを更新する ⭐
       user:
         create: ユーザー登録
         submit: 保存
@@ -112,16 +117,28 @@ ja:
       main_title: ⭐ Webプロフィール帳 ⭐
       create_profile: プロフィールを作成
       profile_list: プロフィール一覧
+      sign_up: ユーザー登録をして作成する
+      login: ログインする
   profiles:
     new:
       main_title: ✨ プロフィール作成 ✨
       tell_me: ⭐ あなたのことを教えてね ⭐
       footer: あなたらしいプロフィールを作ってね💕
+    index:
+      edit: 更新
+      destroy: 削除
     show:
       main_title: "%{name}さんのプロフィール"
+      edit: 更新
+      destroy: 削除
     create:
       success: "%{name}さんのプロフィールが作成されました"
       failure: プロフィール作成に失敗しました
+    edit:
+      main_title: "%{name}さんのプロフィールを編集"
+      tell_me: ⭐ あなたのことを教えてね ⭐
+      footer: あなたらしいプロフィールを作ってね💕
+      success: "%{name}さんのプロフィールが更新されました"
   header:
     logo: Webプロフィール帳
     menu:
@@ -129,27 +146,29 @@ ja:
       login: ログイン
       logout: ログアウト
       sign_up: ユーザー登録
+      profile_list: 投稿したプロフィール
   views:
     profile:
-        name: 名前
-        nickname: みんなからは
-        birth_day: 誕生日
-        constellation: 星座
-        birthplace: 出身地
-        personality: 性格
-        evaluation_others: 人からは
-        hobby_or_interest: 趣味・マイブーム
-        favorite_food: 好きな食べもの
-        favorite_drink: 好きな飲みもの
-        favorite_artist: 好きなアーティスト
-        favorite_book: 好きな本・まんが
-        favorite_movie: 好きな映画
-        favorite_place: 好きな場所
-        special_skill: 特技
-        things_i_want: ほしいもの
-        future_dream: 将来の夢
-        motto: 座右の銘・好きな言葉
-        free_message: メッセージ
+      name: 名前
+      nickname: みんなからは
+      birth_day: 誕生日
+      constellation: 星座
+      birthplace: 出身地
+      personality: 性格
+      evaluation_others: 人からは
+      hobby_or_interest: 趣味・マイブーム
+      favorite_food: 好きな食べもの
+      favorite_drink: 好きな飲みもの
+      favorite_artist: 好きなアーティスト
+      favorite_book: 好きな本・まんが
+      favorite_movie: 好きな映画
+      favorite_anime_game: 好きなアニメ・ゲーム
+      favorite_place: 好きな場所
+      special_skill: 特技
+      things_i_want: ほしいもの
+      future_dream: 将来の夢
+      motto: 座右の銘・好きな言葉
+      free_message: メッセージ
   select_options:
     profile:
       constellation:

@@ -34,6 +34,11 @@
         </button>
         
         <% if user_signed_in? %>
+          <%= link_to profiles_path,
+              class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2" do %>
+            <span class="text-sm">📜</span>
+            <span><%= t('header.menu.profile_list') %></span>
+          <% end %>
           <%= link_to destroy_user_session_path, method: :delete,
               class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 bg-transparent border-none outline-none cursor-pointer flex items-center gap-2" do %>
             <span class="text-sm">🚪</span>

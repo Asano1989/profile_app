@@ -48,7 +48,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">💖</span>
-            <span>わたしの<%= t('activerecord.attributes.profile.name') %>は<%= @profile.name %>です！</span>
+            <span>わたしの<%= t('views.profile.name') %>は<%= @profile.name %>です！</span>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">✨</span>
-            <span><%= t('activerecord.attributes.profile.nickname') %>、<%= @profile.nickname %>って呼ばれています。</span>
+            <span><%= t('views.profile.nickname') %>、<%= @profile.nickname %>って呼ばれています。</span>
           </div>
         </div>
         <% end %>
@@ -67,7 +67,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">⭐</span>
-            <span><%= t('activerecord.attributes.profile.birth_day') %>は<%= @profile.birth_month %>月<%= @profile.birth_day %>日だよ！</span>
+            <span><%= t('views.profile.birth_day') %>は<%= @profile.birth_month %>月<%= @profile.birth_day %>日だよ！</span>
 
           <% if @profile.constellation.present? %>
             <% if @profile.birth_month.blank? && @profile.birth_day.blank? %>
@@ -75,7 +75,7 @@
                 <div class="flex items-center gap-2 text-purple-700 font-medium">
             <% end %>
             <!-- 星座 -->
-            <span><%= t('activerecord.attributes.profile.constellation') %>は<%= @profile.constellation %>💓</span>
+            <span><%= t('views.profile.constellation') %>は<%= @profile.constellation %>💓</span>
           <% end %>
           </div>
         </div>
@@ -86,7 +86,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">☀️</span>
-            <span><%= t('activerecord.attributes.profile.birthplace') %>は<%= @profile.birthplace %>！</span>
+            <span><%= t('views.profile.birthplace') %>は<%= @profile.birthplace %>！</span>
           </div>
         </div>
         <% end %>
@@ -96,7 +96,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">💖</span>
-            <span><%= t('activerecord.attributes.profile.personality_main') %>は<%= @profile.personality_main %><% if @profile.personality_main.present? && @profile.personality_sub.present? %>で<% end %><%= @profile.personality_sub %></span>
+            <span><%= t('views.profile.personality') %>は<%= @profile.personality_main %><% if @profile.personality_main.present? && @profile.personality_sub.present? %>で<% end %><%= @profile.personality_sub %></span>
             <span>……と、自分では思っているよ😁</span>
           </div>
         </div>
@@ -107,7 +107,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">✨</span>
-            <span><%= t('activerecord.attributes.profile.evaluation_others') %><%= @profile.evaluation_others %>って言われることがあるよ。</span>
+            <span><%= t('views.profile.evaluation_others') %><%= @profile.evaluation_others %>って言われることがあるよ。</span>
           </div>
         </div>
         <% end %>
@@ -117,58 +117,77 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">⭐</span>
-            <span><%= t('activerecord.attributes.profile.hobby_or_interest') %>は<%= @profile.hobby_or_interest %>✨</span>
+            <span><%= t('views.profile.hobby_or_interest') %>は<%= @profile.hobby_or_interest %>✨</span>
           </div>
         </div>
         <% end %>
 
-        <% # Todo：入力しない項目は非表示にするかどうか？する場合そのように実装する %>
         <!-- 好きなもの -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <% if @profile.favorite_food.present? %>
             <div class="space-y-3">
               <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('activerecord.attributes.profile.favorite_food') %></span> 🍙
+                <span><%= t('views.profile.favorite_food') %></span> 🍙
               </div>
               <%= @profile.favorite_food %>
             </div>
+          <% end %>
+          <% if @profile.favorite_drink.present? %>
             <div class="space-y-3">
               <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('activerecord.attributes.profile.favorite_drink') %></span> ☕
+                <span><%= t('views.profile.favorite_drink') %></span> ☕
               </div>
               <%= @profile.favorite_drink %>
             </div>
+          <% end %>
+          <% if @profile.favorite_artist.present? %>
             <div class="space-y-3">
               <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('activerecord.attributes.profile.favorite_artist') %></span> 🖼
+                <span><%= t('views.profile.favorite_artist') %></span> 🖼
               </div>
               <%= @profile.favorite_artist %>
             </div>
+          <% end %>
+          <% if @profile.favorite_book.present? %>
             <div class="space-y-3">
               <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('activerecord.attributes.profile.favorite_book') %></span> 📚
+                <span><%= t('views.profile.favorite_book') %></span> 📚
               </div>
               <%= @profile.favorite_book %>
             </div>
+          <% end %>
+          <% if @profile.favorite_movie.present? %>
             <div class="space-y-3">
               <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('activerecord.attributes.profile.favorite_movie') %></span> 🎬
+                <span><%= t('views.profile.favorite_movie') %></span> 🎬
               </div>
               <%= @profile.favorite_movie %>
             </div>
+          <% end %>
+          <% if @profile.favorite_anime_game.present? %>
             <div class="space-y-3">
               <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('activerecord.attributes.profile.favorite_place') %></span> 🌳
+                <span><%= t('views.profile.favorite_anime_game') %></span> 📺
+              </div>
+              <%= @profile.favorite_anime_game %>
+            </div>
+          <% end %>
+          <% if @profile.favorite_place.present? %>
+            <div class="space-y-3">
+              <div class="text-purple-700 font-medium flex items-center gap-2">
+                <span><%= t('views.profile.favorite_place') %></span> 🌳
               </div>
               <%= @profile.favorite_place %>
             </div>
-          </div>
+          <% end %>
+        </div>
 
         <!-- 特技 -->
         <% if @profile.special_skill.present? %>
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">💖</span>
-            <span>わたしの<%= t('activerecord.attributes.profile.special_skill') %>は<%= @profile.special_skill %>です！</span>
+            <span>わたしの<%= t('views.profile.special_skill') %>は<%= @profile.special_skill %>です！</span>
           </div>
         </div>
         <% end %>
@@ -178,7 +197,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">✨</span>
-            <span>今<%= t('activerecord.attributes.profile.things_i_want') %>は<%= @profile.things_i_want %>。</span>
+            <span>今<%= t('views.profile.things_i_want') %>は<%= @profile.things_i_want %>。</span>
           </div>
         </div>
         <% end %>
@@ -188,7 +207,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">⭐</span>
-            <span><%= t('activerecord.attributes.profile.future_dream') %>：<%= @profile.future_dream %></span>
+            <span><%= t('views.profile.future_dream') %>：<%= @profile.future_dream %></span>
           </div>
         </div>
         <% end %>
@@ -198,7 +217,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">🌙</span>
-            <span><%= t('activerecord.attributes.profile.motto') %>は「<%= @profile.motto %>」！</span>
+            <span><%= t('views.profile.motto') %>は「<%= @profile.motto %>」！</span>
           </div>
         </div>
         <% end %>
@@ -208,7 +227,7 @@
         <div class="space-y-3">
           <div class="flex items-center gap-2 text-purple-700 font-medium">
             <span class="text-pink-500">💖</span>
-            <span><%= t('activerecord.attributes.profile.free_message') %></span>
+            <span><%= t('views.profile.free_message') %></span>
           </div>
         
           <div class="backdrop-blur-sm bg-white-100 border-0 shadow-l rounded-3xl">
@@ -219,13 +238,27 @@
         </div>
         <% end %>
         
-        <!-- SNSシェアボタン -->
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span>
-              <%= social_share_button_tag("#{@profile.name}さんのプロフィールです！みんな見てね⭐" + "\n#Webプロフィール帳", url: profile_url(@profile)) %>
-            </span>
+        <div class="grid grid-cols-2 items-center gap-4">
+
+          <!-- SNSシェアボタン -->
+          <div class="space-y-3">
+            <div class="flex justify-center gap-2 text-purple-700 font-medium">
+              <span>
+                <%= social_share_button_tag("#{@profile.name}さんのプロフィールです！みんな見てね⭐" + "\n#Webプロフィール帳", url: profile_url(@profile)) %>
+              </span>
+            </div>
           </div>
+
+          <!-- 編集・削除ボタン -->
+          <div class="flex justify-center">
+            <%if user_signed_in? %>
+              <%= link_to t('.edit'), edit_profile_path(@profile.id),
+                  class: "inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-l py-1 px-3 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %>　
+              <%= link_to t('.destroy'), profile_path(@profile.id), method: :delete, data: { confirm: "#{@profile.name}さんのプロフィールを削除してもよろしいですか？" },
+                  class: "inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-l py-1 px-3 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %>
+            <% end %>
+          </div>
+
         </div>
 
       </div>

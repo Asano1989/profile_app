@@ -1,4 +1,5 @@
 class Profile < ApplicationRecord
+  belongs_to :user
   generate_public_uid
 
   NGWORD_REGEX = /(.)\1{4,}/.freeze
@@ -19,6 +20,7 @@ class Profile < ApplicationRecord
       validates :favorite_artist
       validates :favorite_book
       validates :favorite_movie
+      validates :favorite_anime_game
       validates :favorite_place
       validates :special_skill
       validates :things_i_want
