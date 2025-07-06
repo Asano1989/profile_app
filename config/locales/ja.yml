@@ -146,6 +146,8 @@ ja:
       login: ログイン
       logout: ログアウト
       sign_up: ユーザー登録
+      user_menu: ユーザーメニュー
+      user_edit: ユーザー情報の更新
       profile_list: 投稿したプロフィール
   views:
     profile:

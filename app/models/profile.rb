@@ -68,7 +68,7 @@ class Profile < ApplicationRecord
 
       normalized = ObscenityFilterHelper.normalized_for_check(value)
       if Obscenity.profane?(normalized)
-        errors.add(column, "：不適切な表現が含まれています" )
+        errors.add(column, "：不適切な表現が含まれています")
       end
     end
   end

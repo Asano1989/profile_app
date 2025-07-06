@@ -40,7 +40,7 @@
     <!-- メインボタン -->
     <div class="text-center mb-8">
       <%= link_to new_profile_path, 
-          class: "inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-xl md:text-2xl py-6 px-10 md:px-16 rounded-3xl shadow-xl transform transition-all duration-300 hover:scale-110 hover:shadow-purple-500/25 no-underline" do %>
+          class: "inline-block bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-xl md:text-2xl py-6 px-10 md:px-16 rounded-3xl shadow-xl transform transition-all duration-300 hover:scale-110 hover:shadow-purple-500/25 no-underline" do %>
         <span class="flex items-center gap-3">
           <span class="text-2xl animate-pulse">✨</span>
           <span><%= t('.create_profile') %></span>
@@ -55,21 +55,12 @@
         <% if user_signed_in? %>
         <% else %>
           <%= link_to t('.sign_up'), new_user_registration_path,
-              class: "inline-block bg-gradient-to-r from-violet-400 to-purple-400 hover:from-purple-500 hover:to-pink-600 text-purple-800 font-bold text-l py-3 px-6 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %>　
+              class: "inline-block bg-gradient-to-r from-violet-300 to-purple-300 hover:from-purple-500 hover:to-pink-600 text-purple-800 font-bold text-l py-3 px-6 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %>　
           <%= link_to t('.login'), new_user_session_path,
-              class: "inline-block bg-gradient-to-r from-violet-400 to-purple-400 hover:from-purple-500 hover:to-pink-600 text-purple-800 font-bold text-l py-3 px-6 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %>
+              class: "inline-block bg-gradient-to-r from-violet-300 to-purple-300 hover:from-purple-500 hover:to-pink-600 text-purple-800 font-bold text-l py-3 px-6 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %>
         <% end %>
       </div>
 
-    </div>
-
-    <!-- サブリンク -->
-    <div class="text-center">
-      <%= link_to profiles_path, 
-          class: "inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium text-lg transition-all duration-200 hover:scale-105 no-underline" do %>
-        <span><%= t('.profile_list') %></span>
-        <span class="text-sm transform transition-transform duration-200">→</span>
-      <% end %>
     </div>
 
     <!-- 装飾的な下部要素 -->

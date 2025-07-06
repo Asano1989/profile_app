@@ -1,12 +1,10 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_profile, only: [ :show, :edit, :update, :destroy ]
+
   def index
+    @profiles = []
     if user_signed_in?
       @profiles = Profile.where(user_id: current_user.id)
-    else
-      # todo: 公開するときは全件が表示されないようにする
-      @profiles = Profile.all.order("created_at ASC")
     end
   end
 
@@ -21,9 +19,9 @@ class ProfilesController < ApplicationController
     end
 
     if @profile.save
-      redirect_to profile_path(@profile.public_uid), success: t('profiles.create.success', name: @profile.name )
+      redirect_to profile_path(@profile.public_uid), success: t("profiles.create.success", name: @profile.name)
     else
-      flash.now[:danger] = t('profiles.create.failure')
+      flash.now[:danger] = t("profiles.create.failure")
       render :new, status: :unprocessable_entity
     end
   end
@@ -36,9 +34,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to profile_path(@profile.public_uid), success: t('profiles.edit.success', name: @profile.name )
+      redirect_to profile_path(@profile.public_uid), success: t("profiles.edit.success", name: @profile.name)
     else
-      flash.now[:danger] = t('profiles.update.failure')
+      flash.now[:danger] = t("profiles.update.failure")
       render :update, status: :unprocessable_entity
     end
   end
