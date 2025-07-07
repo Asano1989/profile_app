@@ -89,24 +89,6 @@ Rails.application.configure do
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
 
-  config.action_mailer.raise_delivery_errors = true
-  
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      address:              'smtp.example.com',
-      port:                 587,
-      domain:               'example.com',
-      user_name:            ENV['SMTP_USER'],
-      password:             ENV['SMTP_PASSWORD'],
-      authentication:       'plain',
-      enable_starttls_auto: true
-    }
-
-  config.action_mailer.default_url_options = {
-      host: 'your.production.domain',
-      protocol: 'https'
-    }
-
   config.log_level = :debug
   config.logger = Logger.new($stdout)
 end
