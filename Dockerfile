@@ -48,7 +48,9 @@ RUN chmod +x /usr/bin/entrypoint.sh
 # コンテナ起動時に entrypoint.sh を実行
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
+RUN yarn build
+
 # Tailwindなどをプリコンパイル
-RUN bin/rails assets:precompile
+RUN /bin/sh -c bin/rails assets:precompile
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

@@ -5,14 +5,15 @@
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
     "@rails/ujs": "^7.1.501",
+    "tailwindcss": "^3.4.3",
     "esbuild": "^0.20.2",
     "jquery": "^3.7.1"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css --minify",
+    "build:css": "NODE_ENV=production tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css --minify",
     "build": "yarn build:css && esbuild app/javascript/*.* --bundle --outdir=app/assets/builds --minify"
   },
   "devDependencies": {
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^3.4.3"
   }
 }
