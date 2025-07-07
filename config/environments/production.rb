@@ -93,4 +93,5 @@ Rails.application.configure do
   config.logger = Logger.new($stdout)
 
   config.hosts << "high-alayne-asano1989-b-ce797f22.koyeb.app"
+  
 end
