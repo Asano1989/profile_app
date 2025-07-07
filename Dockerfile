@@ -50,6 +50,3 @@ ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 # Tailwindなどをプリコンパイル
 RUN bin/rails assets:precompile
-
-# コンテナ起動時に実行するコマンドを指定
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
