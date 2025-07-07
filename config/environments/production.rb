@@ -3,6 +3,8 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.cache_classes = true
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
@@ -21,7 +23,7 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  # config.public_file_server.enabled = false
+  config.public_file_server.enabled = true
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -86,6 +88,24 @@ Rails.application.configure do
 
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
+
+  config.action_mailer.raise_delivery_errors = true
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.example.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            ENV['SMTP_USER'],
+      password:             ENV['SMTP_PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
+
+  config.action_mailer.default_url_options = {
+      host: 'your.production.domain',
+      protocol: 'https'
+    }
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [

@@ -12,33 +12,36 @@ RUN apt-get update -qq && apt-get install -y \
   git \
   watchman
 
-# Node.js & Yarn のインストール
+# Node.js & Yarn & PostgreSQL clientのインストール
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-  && apt-get install -y nodejs \
-  && npm install -g yarn
+  && apt-get update -qq \
+  && apt-get install -y nodejs yarn postgresql-client
 
 # package.jsonとyarn.lockを先にコピーしてキャッシュを効かせる
 COPY package.json yarn.lock ./
 RUN yarn install
 
-# アプリケーション全体をコピー
-COPY . .
-
 # GemfileとGemfile.lockを先にコピーしてbundle install
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+
+# アプリケーション全体をコピー
+COPY . .
 
 # esbuild 出力先ディレクトリを作成（エラー回避）
 RUN mkdir -p app/assets/builds
 
 # entrypoint.shをコンテナ内の作業ディレクトリにコピー
-COPY entrypoint.sh /usr/bin/
+# COPY entrypoint.sh /usr/bin/
 
 # entrypoint.shの実行権限を付与
-RUN chmod +x /usr/bin/entrypoint.sh
+# RUN chmod +x /usr/bin/entrypoint.sh
 
 # コンテナ起動時にentrypoint.shを実行するように設定
-ENTRYPOINT ["entrypoint.sh"]
+# ENTRYPOINT ["entrypoint.sh"]
+
+# Tailwindなどをプリコンパイル
+RUN bin/rails assets:precompile
 
 # コンテナ起動時に実行するコマンドを指定
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
