@@ -1,6 +1,9 @@
 FROM ruby:3.2.2
 ARG RUBYGEMS_VERSION=3.3.20
 
+ENV LANG C.UTF-8
+ENV TZ Asia/Tokyo
+
 # 作業ディレクトリを指定
 WORKDIR /profile_app
 
@@ -40,4 +43,4 @@ RUN mkdir -p app/assets/builds
 RUN bin/rails assets:precompile
 
 # コンテナ起動時に実行するコマンドを指定
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["bash", "-c", "bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}"]
