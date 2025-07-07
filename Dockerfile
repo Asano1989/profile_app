@@ -48,9 +48,13 @@ RUN chmod +x /usr/bin/entrypoint.sh
 # コンテナ起動時に entrypoint.sh を実行
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
+# Tailwind出力先ディレクトリ作成（念のため）
+RUN mkdir -p app/assets/builds
+
+# Tailwind CSS ビルド
 RUN yarn build
 
-# Tailwindなどをプリコンパイル
-RUN /bin/sh -c bundle exec rails assets:precompile
+# RAILS_ENV=production 指定してプリコンパイル
+RUN RAILS_ENV=production bundle exec rails assets:precompile
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
