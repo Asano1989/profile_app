@@ -54,7 +54,7 @@ RUN mkdir -p app/assets/builds
 # Tailwind CSS ビルド
 RUN yarn build
 
-# RAILS_ENV=production 指定してプリコンパイル
-RUN RAILS_ENV=production bundle exec rails assets:precompile
+# アセットプリコンパイル：本番用で必要
+RUN SECRET_KEY_BASE=dummy RAILS_ENV=production bundle exec rails assets:precompile
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
