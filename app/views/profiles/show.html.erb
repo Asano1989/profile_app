@@ -239,14 +239,14 @@
         <% end %>
         
         <div class="flex justify-between items-center px-4">
-          <!-- 編集・削除ボタン（左側） -->
+          <!-- SNSシェアボタン -->
           <div class="flex gap-2">
             <span class="text-purple-700 font-medium">
               <%= social_share_button_tag("#{@profile.name}さんのプロフィールです！みんな見てね⭐" + "\n#Webプロフィール帳", url: profile_url(@profile)) %>
             </span>
           </div>
 
-          <!-- SNSシェアボタン（右側） -->
+          <!-- 編集・削除ボタン -->
           <div class="flex items-center">
             <% if user_signed_in? %>
               <span class="px-2"><%= link_to t('.edit'), edit_profile_path(@profile.id),
