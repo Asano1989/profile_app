@@ -36,15 +36,6 @@ COPY . .
 # esbuild 出力先ディレクトリを作成（エラー回避）
 RUN mkdir -p app/assets/builds
 
-# entrypoint.shをコンテナ内の作業ディレクトリにコピー
-# COPY entrypoint.sh /usr/bin/
-
-# entrypoint.shの実行権限を付与
-# RUN chmod +x /usr/bin/entrypoint.sh
-
-# コンテナ起動時にentrypoint.shを実行するように設定
-# ENTRYPOINT ["entrypoint.sh"]
-
 # Tailwindなどをプリコンパイル
 RUN bin/rails assets:precompile
 
