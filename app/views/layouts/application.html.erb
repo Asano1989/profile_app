@@ -10,7 +10,7 @@
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag(source='/favicon.ico') %>
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "tailwind", media: "all", "data-turbo-track": "reload" %>
