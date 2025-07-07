@@ -10,12 +10,17 @@ RUN apt-get update -qq && apt-get install -y \
   libpq-dev \
   curl \
   git \
-  watchman
+  watchman \
+  && rm -rf /var/lib/apt/lists/* # aptキャッシュをクリア
 
 # Node.js & Yarn & PostgreSQL clientのインストール
+# NodeSourceのセットアップスクリプトをより確実に実行し、Yarnのインストールを明示的に行う
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get update -qq \
-  && apt-get install -y nodejs yarn postgresql-client
+  && apt-get install -y nodejs postgresql-client \
+  && npm install -g yarn \
+  && npm cache clean --force \
+  && rm -rf /var/lib/apt/lists/*
 
 # package.jsonとyarn.lockを先にコピーしてキャッシュを効かせる
 COPY package.json yarn.lock ./
