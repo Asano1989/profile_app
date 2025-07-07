@@ -249,9 +249,9 @@
           <!-- 編集・削除ボタン -->
           <div class="flex items-center">
             <% if user_signed_in? %>
-              <span class="px-2"><%= link_to t('.edit'), edit_profile_path(@profile.id),
+              <span class="px-2"><%= link_to t('.edit'), edit_profile_path(@profile.public_uid),
                   class: "inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-sm py-2 px-4 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %></span>
-              <span class="px-2"><%= link_to t('.destroy'), profile_path(@profile.id), method: :delete, data: { confirm: "#{@profile.name}さんのプロフィールを削除してもよろしいですか？" },
+              <span class="px-2"><%= link_to t('.destroy'), profile_path(@profile.public_uid), method: :delete, data: { confirm: "#{@profile.name}さんのプロフィールを削除してもよろしいですか？" },
                   class: "inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-red-500 hover:to-pink-600 text-white font-bold text-sm py-2 px-4 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %></span>
             <% end %>
           </div>
