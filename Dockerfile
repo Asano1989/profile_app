@@ -51,6 +51,6 @@ ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 RUN yarn build
 
 # Tailwindなどをプリコンパイル
-RUN bundle exec rails assets:precompile
+RUN /bin/sh -c bundle exec rails assets:precompile
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
