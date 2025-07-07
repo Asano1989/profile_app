@@ -49,4 +49,4 @@ RUN mkdir -p app/assets/builds
 RUN bin/rails assets:precompile
 
 # コンテナ起動時に実行するコマンドを指定
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
