@@ -92,6 +92,9 @@ Rails.application.configure do
   config.log_level = :debug
   config.logger = Logger.new($stdout)
 
-  config.hosts << "high-alayne-asano1989-b-ce797f22.koyeb.app"
-  
+  if ENV["RAILS_HOSTS"]
+    ENV["RAILS_HOSTS"].split(",").each do |host|
+      config.hosts << host.strip
+    end
+  end
 end
