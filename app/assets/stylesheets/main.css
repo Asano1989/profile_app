@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box !important;
+}
+
+/* グラデーションテキスト */
+.gradient-text {
+    background: linear-gradient(45deg, #581c87, #7c2d92) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* デスクトップナビゲーション - 1024px以上で表示 */
+.desktop-nav {
+    display: none !important;
+}
+
+@media (min-width: 1024px) {
+    .desktop-nav {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+}
+
+/* モバイルメニューボタン - 1024px以下で表示 */
+.mobile-menu-btn {
+    display: block !important;
+}
+
+@media (min-width: 1024px) {
+    .mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+/* モバイルメニュー */
+.mobile-menu {
+    display: none !important;
+}
+
+.mobile-menu.show {
+    display: block !important;
+}
+
+@media (min-width: 1024px) {
+    .mobile-menu {
+        display: none !important;
+    }
+    .mobile-menu.show {
+        display: none !important;
+    }
+}
+
+/* ホバー効果 */
+.nav-hover:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    color: #7c2d92 !important;
+}
+
+/* デスクトップナビのリンクスタイル */
+@media (min-width: 1024px) {
+    #desktopNav {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1rem !important;
+    }
+    
+    #desktopNav a {
+        display: flex !important;
+        align-items: center !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* モバイルメニューのリンクスタイル */
+#mobileMenu a {
+    display: flex !important;
+    align-items: center !important;
+}

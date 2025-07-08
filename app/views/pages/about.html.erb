@@ -1,140 +1,105 @@
-<div class="h-full bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200 relative overflow-hidden">
-  <!-- 装飾的な背景要素 -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <!-- 浮遊する装飾アイコン -->
-    <div class="absolute top-16 left-16 text-pink-300 opacity-50 animate-bounce">
-      <span class="text-3xl">🌸</span>
-    </div>
-    <div class="absolute top-32 right-20 text-purple-300 opacity-60 animate-pulse">
-      <span class="text-2xl">💖</span>
-    </div>
-    <div class="absolute top-1/4 left-1/4 text-pink-300 opacity-40 animate-ping">
-      <span class="text-xl">✨</span>
-    </div>
-    <div class="absolute top-1/3 right-1/4 text-purple-300 opacity-50 animate-bounce" style="animation-delay: 0.5s;">
-      <span class="text-2xl">🦄</span>
-    </div>
-    <div class="absolute bottom-1/3 left-20 text-pink-300 opacity-60 animate-pulse" style="animation-delay: 1s;">
-      <span class="text-xl">🌙</span>
-    </div>
-    <div class="absolute bottom-20 right-16 text-purple-300 opacity-40 animate-bounce" style="animation-delay: 1.5s;">
-      <span class="text-2xl">⭐</span>
-    </div>
-    <div class="absolute top-1/2 left-10 text-pink-300 opacity-30 animate-pulse" style="animation-delay: 2s;">
-      <span class="text-lg">🎀</span>
-    </div>
-    <div class="absolute bottom-1/2 right-10 text-purple-300 opacity-50 animate-ping" style="animation-delay: 2.5s;">
-      <span class="text-xl">💫</span>
-    </div>
+<div class="relative z-10 container mx-auto px-4 md:px-6 py-6 md:py-10">
+  <!-- タイトル -->
+  <div class="text-center my-8 md:my-12">
+      <h1 class="text-2xl md:text-4xl font-bold text-purple-800 mb-4 drop-shadow-sm">
+          <span class="text-xl md:text-2xl mr-2">📖</span>
+          <span><%= t('pages.about.title') %></span>
+          <span class="text-xl md:text-2xl ml-2">✨</span>
+      </h1>
   </div>
 
-  <!-- メインコンテンツ -->
-  <div class="relative z-10 container mx-auto px-6 py-10 pb-24">
-    <!-- タイトル -->
-    <div class="text-center my-12">
-      <h1 class="text-4xl font-bold text-purple-800 mb-4 drop-shadow-sm">
-        <span class="text-2xl mr-2">📖</span>
-        <span><%= t('views.about.title') %></span>
-        <span class="text-2xl ml-2">✨</span>
-      </h1>
-    </div>
-
-    <!-- メインコンテンツカード -->
-    <div class="max-w-4xl mx-auto">
+  <!-- メインコンテンツカード -->
+  <div class="max-w-4xl mx-auto space-y-6 md:space-y-8">
       <!-- はじめにセクション -->
-      <div class="backdrop-blur-md bg-white/80 rounded-3xl shadow-xl border border-pink-200 p-8 mb-8">
-        <h2 class="text-2xl font-bold text-purple-800 mb-6 flex items-center gap-3">
-          <span class="text-xl">🌸</span>
-          はじめに
-        </h2>
-        <p class="text-purple-700 text-lg leading-relaxed">
-          webによみがえった、懐かしい「プロフィール帳」を作成するためのサービスです。
-        </p>
+      <div class="backdrop-blur-md bg-white/90 rounded-2xl md:rounded-3xl shadow-xl border-2 border-pink-200 p-4 md:p-8">
+          <h2 class="text-xl md:text-2xl font-bold text-purple-800 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+              <span class="text-lg md:text-xl">🌸</span>
+              はじめに
+          </h2>
+          <p class="text-purple-700 text-base md:text-lg leading-relaxed">
+              webによみがえった、懐かしい「プロフィール帳」を作成するためのサービスです。
+          </p>
       </div>
 
       <!-- 使い方セクション -->
-      <div class="backdrop-blur-md bg-white/80 rounded-3xl shadow-xl border border-pink-200 p-8 mb-10">
-        <h2 class="text-2xl font-bold text-purple-800 mb-6 flex items-center gap-3">
-          <span class="text-xl">💖</span>
-          使い方
-        </h2>
-        
-        <div class="space-y-6">
-          <!-- ステップ0 -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm">
-              0
-            </div>
-            <div>
-              <p class="text-purple-700 text-lg leading-relaxed">
-                ユーザー登録を行い、ログインする
-              </p>
-              <p class="text-purple-600 text-sm mt-2 pl-4 border-l-2 border-pink-300">
-                ※ログインした状態でプロフィール帳を作成すると、後からプロフィールの編集と削除が可能になります
-              </p>
-            </div>
-          </div>
+      <div class="backdrop-blur-md bg-white/90 rounded-2xl md:rounded-3xl shadow-xl border-2 border-pink-200 p-4 md:p-8">
+          <h2 class="text-xl md:text-2xl font-bold text-purple-800 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+              <span class="text-lg md:text-xl">💖</span>
+              使い方
+          </h2>
 
-          <!-- ステップ1 -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm">
-              1
-            </div>
-            <div>
-              <p class="text-purple-700 text-lg leading-relaxed">
-                「プロフィールを作成する」ボタンをクリックし、プロフィール帳作成画面へ移動する
-              </p>
-            </div>
-          </div>
+          <div class="space-y-4 md:space-y-6">
+              <!-- ステップ0 -->
+              <div class="flex items-start gap-3 md:gap-4">
+                  <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base shadow-lg">
+                      0
+                  </div>
+                  <div class="flex-1">
+                      <p class="text-purple-700 text-sm md:text-lg leading-relaxed">ユーザー登録を行い、ログインする</p>
+                      <p class="text-purple-600 text-xs md:text-sm mt-2 pl-3 md:pl-4 border-l-2 border-pink-300">
+                          ※ログインした状態でプロフィール帳を作成すると、後からプロフィールの編集と削除が可能になります
+                      </p>
+                  </div>
+              </div>
 
-          <!-- ステップ2 -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm">
-              2
-            </div>
-            <div>
-              <p class="text-purple-700 text-lg leading-relaxed">
-                公表したい項目を入力し、「プロフィールを作成する」ボタンでプロフィール帳を作成する
-              </p>
-            </div>
-          </div>
+              <!-- ステップ1 -->
+              <div class="flex items-start gap-3 md:gap-4">
+                  <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base shadow-lg">
+                      1
+                  </div>
+                  <div class="flex-1">
+                      <p class="text-purple-700 text-sm md:text-lg leading-relaxed">
+                          「プロフィールを作成する」ボタンをクリックし、プロフィール帳作成画面へ移動する
+                      </p>
+                  </div>
+              </div>
 
-          <!-- ステップ3 -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm">
-              3
-            </div>
-            <div>
-              <p class="text-purple-700 text-lg leading-relaxed">
-                作成したプロフィール帳は、下部のシェアボタンでSNSに共有ができます
-              </p>
-              <p class="text-purple-600 text-sm mt-2 pl-4 border-l-2 border-pink-300">
-                ※ログインした状態で作成したプロフィールは、編集と削除が可能です
-              </p>
-            </div>
+              <!-- ステップ2 -->
+              <div class="flex items-start gap-3 md:gap-4">
+                  <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base shadow-lg">
+                      2
+                  </div>
+                  <div class="flex-1">
+                      <p class="text-purple-700 text-sm md:text-lg leading-relaxed">
+                          公表したい項目を入力し、「プロフィールを作成する」ボタンでプロフィール帳を作成する
+                      </p>
+                  </div>
+              </div>
+
+              <!-- ステップ3 -->
+              <div class="flex items-start gap-3 md:gap-4">
+                  <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base shadow-lg">
+                      3
+                  </div>
+                  <div class="flex-1">
+                      <p class="text-purple-700 text-sm md:text-lg leading-relaxed">
+                          作成したプロフィール帳は、下部のシェアボタンでSNSに共有ができます
+                      </p>
+                      <p class="text-purple-600 text-xs md:text-sm mt-2 pl-3 md:pl-4 border-l-2 border-pink-300">
+                          ※ログインした状態で作成したプロフィールは、編集と削除が可能です
+                      </p>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
 
       <!-- 戻るボタン -->
-      <div class="text-center mb-16">
-        <%= link_to root_path, 
-            class: "inline-flex items-center gap-3 bg-gradient-to-r from-pink-400 to-purple-400 text-white px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 no-underline" do %>
-          <span class="text-xl">🏠</span>
-          <span><%= t('views.about.back_home') %></span>
-        <% end %>
+      <div class="text-center pb-8 md:pb-16">
+          <%= link_to root_path, class:"inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 active:scale-95" do %>
+              <span class="text-lg md:text-xl">🏠</span>
+              <span><%= t('pages.about.back_home') %></span>
+          <% end %>
       </div>
-    </div>
   </div>
+</div>
 
-  <!-- 装飾的な下部要素（固定位置） -->
-  <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-0">
-    <div class="flex gap-3 text-2xl opacity-60">
+<!-- 装飾的な下部要素 -->
+<div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
+  <div class="flex gap-2 md:gap-3 text-lg md:text-2xl opacity-60">
       <span class="animate-bounce text-pink-400">🌸</span>
       <span class="animate-pulse text-purple-400">💖</span>
       <span class="animate-ping text-pink-400">✨</span>
       <span class="animate-pulse text-purple-400">💖</span>
       <span class="animate-bounce text-pink-400">🌸</span>
-    </div>
   </div>
 </div>

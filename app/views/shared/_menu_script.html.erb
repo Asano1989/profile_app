@@ -1,0 +1,80 @@
+<script>
+// Turbo対応のメニュー制御
+function initializeMobileMenu() {
+    // 既存のイベントリスナーをクリーンアップ
+    const existingListeners = document.querySelectorAll('[data-menu-initialized]');
+    existingListeners.forEach(element => {
+        element.removeAttribute('data-menu-initialized');
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileMenuBtn && mobileMenu && !mobileMenuBtn.hasAttribute('data-menu-initialized')) {
+        // 初期化済みマークを付ける
+        mobileMenuBtn.setAttribute('data-menu-initialized', 'true');
+        
+        // モバイルメニューボタンのクリックイベント
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('Mobile menu button clicked'); // デバッグ用
+            
+            if (mobileMenu.classList.contains('show')) {
+                mobileMenu.classList.remove('show');
+            } else {
+                mobileMenu.classList.add('show');
+            }
+        });
+
+        // メニュー外をクリックしたら閉じる（イベント委譲を使用）
+        document.addEventListener('click', function(event) {
+            const currentMobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const currentMobileMenu = document.getElementById('mobileMenu');
+            
+            if (currentMobileMenuBtn && currentMobileMenu &&
+                !currentMobileMenuBtn.contains(event.target) && 
+                !currentMobileMenu.contains(event.target)) {
+                currentMobileMenu.classList.remove('show');
+            }
+        });
+
+        // モバイルメニューのリンクをクリックしたら閉じる
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('Mobile menu link clicked'); // デバッグ用
+                mobileMenu.classList.remove('show');
+            });
+        });
+        
+        // ウィンドウリサイズ時の処理
+        window.addEventListener('resize', function() {
+            const currentMobileMenu = document.getElementById('mobileMenu');
+            if (window.innerWidth >= 768 && currentMobileMenu) {
+                currentMobileMenu.classList.remove('show');
+            }
+        });
+        
+        console.log('Mobile menu initialized'); // デバッグ用
+    }
+}
+
+// 初回ロード時とTurbo遷移時の両方で実行
+document.addEventListener('DOMContentLoaded', initializeMobileMenu);
+document.addEventListener('turbo:load', initializeMobileMenu);
+
+// Turbo遷移開始時にメニューを閉じる
+document.addEventListener('turbo:before-visit', function() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+        mobileMenu.classList.remove('show');
+    }
+});
+
+// フォールバック：ページが完全に読み込まれた後にも実行
+window.addEventListener('load', function() {
+    setTimeout(initializeMobileMenu, 100);
+});
+</script>

@@ -13,16 +13,39 @@
     <%= favicon_link_tag(source='/favicon.ico') %>
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", media: "all", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "main", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true  %>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'bounce': 'bounce 1s infinite',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'ping': 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
+                    },
+                    colors: {
+                        'dream-purple': {
+                            300: '#c084fc',
+                            700: '#581c87',
+                            800: '#7c2d92'
+                        },
+                        'dream-pink': {
+                            300: '#f472b6',
+                            200: '#f8d7da'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <%= render "shared/menu_script" %>
   </head>
 
-  <body class="min-h-screen bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200" data-turbo="false">
+  <body class="min-h-screen bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200">
     <%= render "shared/header" %>
-
-    <main class="h-[calc(100vh-4rem)]">
-      <%= render partial: "shared/messages" %>
-
-      <%= yield %>
-    </main>
+    <%= render partial: "shared/messages" %>
+    <%= yield %>
   </body>
 </html>

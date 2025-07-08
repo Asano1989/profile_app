@@ -1,72 +1,92 @@
-<header class="h-16 bg-violet-300 shadow-md relative">
-  <!-- メインコンテナ -->
-  <div class="container mx-auto px-4 h-full relative">
-    <div class="flex justify-between items-center h-full">
-      <!-- ロゴ部分 -->
-      <div class="flex items-center gap-2">
-        <span class="text-2xl animate-bounce">🌈</span>
-        <%= link_to root_path, class: "text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-800 to-purple-800 bg-clip-text text-transparent" do %>
+<header class="bg-gradient-to-r from-purple-300 via-purple-300 to-purple-400 shadow-lg border-b-2 border-pink-300 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- ロゴ -->
+      <%= link_to root_path, class: "flex items-center gap-2 group" do %>
+        <span class="text-2xl md:text-3xl">🌈</span>
+        <span class="text-xl md:text-2xl font-bold gradient-text group-hover:scale-105 transition-transform duration-200">
           <%= t('header.logo') %>
-        <% end %>
-      </div>
+        </span>
+      <% end %>
 
-      <!-- ナビゲーションメニュー -->
-      <nav class="flex items-center gap-6 md:gap-8">
-        <%= link_to about_path, class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2" do %>
-          <span class="text-sm">📖</span>
+      <!-- デスクトップナビゲーション -->
+      <nav id="desktopNav" class="desktop-nav items-center space-x-4 lg:space-x-6">
+        <%= link_to about_path, class: "flex items-center gap-2 text-purple-800 font-medium nav-hover transition-all duration-200 px-3 py-2 rounded-full" do %>
+          <span class="text-lg">📖</span>
           <span><%= t('header.menu.about') %></span>
         <% end %>
 
         <% if user_signed_in? %>
-          <%= link_to profiles_path, class: "no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2" do %>
-            <span class="text-sm">📜</span>
+          <%= link_to profiles_path, class: "flex items-center gap-2 text-purple-800 font-medium nav-hover transition-all duration-200 px-3 py-2 rounded-full" do %>
+            <span class="text-lg">📜</span>
             <span><%= t('header.menu.profile_list') %></span>
           <% end %>
 
-          <!-- ユーザーメニュードロップダウン -->
-          <details class="relative z-50">
-            <summary class="text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 cursor-pointer flex items-center gap-2 list-none outline-none">
-              <span class="text-sm">👤</span>
-              <span><%= t('header.menu.user_menu') %></span>
-              <span class="text-xs">▼</span>
-            </summary>
-            
-            <div class="relative">
-              <div class="absolute right-0 top-2 w-48 backdrop-blur-md bg-white/90 border border-pink-200 rounded-2xl shadow-2xl z-50">
-                <div class="py-2">
-                  <%= link_to edit_user_registration_path(current_user.id),
-                      data: { turbo: false },
-                      class: "no-underline block px-4 py-3 text-purple-800 hover:bg-pink-100/50 hover:text-purple-700 transition-all duration-200 flex items-center gap-3" do %>
-                    <span class="text-sm">⚙️</span>
-                    <span><%= t('header.menu.user_edit') %></span>
-                  <% end %>
-                  
-                  <div class="border-t border-pink-200 my-1"></div>
-                  
-                  <%= link_to destroy_user_session_path,
-                      method: :delete,
-                      data: { turbo: false },
-                      class: "no-underline block px-4 py-3 text-purple-800 hover:bg-pink-100/50 hover:text-purple-700 transition-all duration-200 flex items-center gap-3" do %>
-                    <span class="text-sm">🚪</span>
-                    <span><%= t('header.menu.logout') %></span>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </details>
+          <%= link_to edit_user_registration_path, class: "flex items-center gap-2 text-purple-800 font-medium nav-hover transition-all duration-200 px-3 py-2 rounded-full" do %>
+            <span class="text-lg">⚙️</span>
+            <span><%= t('header.menu.user_edit') %></span>
+          <% end %>
 
+          <%= link_to destroy_user_session_path, method: :delete, class: "flex items-center gap-2 text-purple-800 font-medium nav-hover transition-all duration-200 px-3 py-2 rounded-full" do %>
+            <span class="text-lg">🚪</span>
+            <span><%= t('header.menu.logout') %></span>
+          <% end %>
         <% else %>
-          <a href="<%= new_user_session_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
-            <span class="text-sm">🔑</span>
+          <%= link_to new_user_session_path, class: "flex items-center gap-2 text-purple-800 font-medium nav-hover transition-all duration-200 px-3 py-2 rounded-full" do %>
+            <span class="text-lg">🔑</span>
             <span><%= t('header.menu.login') %></span>
-          </a>
-          
-          <a href="<%= new_user_registration_path %>" class="no-underline text-purple-800 font-medium text-lg hover:text-purple-700 transition-all duration-200 hover:scale-105 flex items-center gap-2">
-            <span class="text-sm">👤</span>
+          <% end %>
+
+          <%= link_to new_user_registration_path, class: "flex items-center gap-2 text-purple-800 font-medium nav-hover transition-all duration-200 px-3 py-2 rounded-full" do %>
+            <span class="text-lg">📝</span>
             <span><%= t('header.menu.sign_up') %></span>
-          </a>
+          <% end %>
         <% end %>
       </nav>
+
+      <!-- モバイルメニューボタン -->
+      <button id="mobileMenuBtn" class="mobile-menu-btn text-purple-800 hover:text-purple-700 focus:outline-none focus:text-purple-700 p-2">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- モバイルメニュー -->
+    <div id="mobileMenu" class="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-sm rounded-lg mt-2 border-2 border-pink-200">
+        <%= link_to about_path, class: "flex items-center gap-3 text-purple-800 font-medium hover:text-purple-700 hover:bg-pink-100/50 block px-3 py-2 rounded-md transition-all duration-200" do %>
+          <span class="text-lg">📖</span>
+          <span><%= t('header.menu.about') %></span>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <%= link_to profiles_path, class: "flex items-center gap-3 text-purple-800 font-medium hover:text-purple-700 hover:bg-pink-100/50 block px-3 py-2 rounded-md transition-all duration-200" do %>
+            <span class="text-lg">📜</span>
+            <span><%= t('header.menu.profile_list') %></span>
+          <% end %>
+
+          <%= link_to edit_user_registration_path, class: "flex items-center gap-3 text-purple-800 font-medium hover:text-purple-700 hover:bg-pink-100/50 block px-3 py-2 rounded-md transition-all duration-200" do %>
+            <span class="text-lg">⚙️</span>
+            <span><%= t('header.menu.user_edit') %></span>
+          <% end %>
+
+          <%= link_to destroy_user_session_path, method: :delete, class: "flex items-center gap-3 text-purple-800 font-medium hover:text-purple-700 hover:bg-pink-100/50 block px-3 py-2 rounded-md transition-all duration-200" do %>
+            <span class="text-lg">🚪</span>
+            <span><%= t('header.menu.logout') %></span>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "flex items-center gap-3 text-purple-800 font-medium hover:text-purple-700 hover:bg-pink-100/50 block px-3 py-2 rounded-md transition-all duration-200" do %>
+            <span class="text-lg">🔑</span>
+            <span><%= t('header.menu.login') %></span>
+          <% end %>
+
+          <%= link_to new_user_registration_path, class: "flex items-center gap-3 text-purple-800 font-medium hover:text-purple-700 hover:bg-pink-100/50 block px-3 py-2 rounded-md transition-all duration-200" do %>
+            <span class="text-lg">📝</span>
+            <span><%= t('header.menu.sign_up') %></span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </header>
