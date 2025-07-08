@@ -110,15 +110,14 @@ ja:
         update: ⭐ プロフィールを更新する ⭐
       user:
         create: アカウント登録
-        submit: 保存
-        update: アカウントを更新
+        update: アカウントを更新する
   pages:
     home:
       main_title: ⭐ Webプロフィール帳 ⭐
-      create_profile: プロフィールを作成
+      create_profile: プロフィールを作成する
       profile_list: プロフィール一覧
-      sign_up: ユーザー登録をして作成する
-      login: ログインする
+      sign_up: まずはユーザー登録をする
+      login: ログイン後、プロフィールを作成する
     about:
       title: このサイトについて
       back_home: ホームに戻る
