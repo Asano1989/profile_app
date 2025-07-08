@@ -1,7 +1,7 @@
-<div class="p-4">
+<div class="p-8">
 <% @profiles.each do |t| %>
-  <div class="py-1">
-    <h1 class="text-4xl font-bold bg-gradient-to-r to-purple-600 from-violet-500 bg-clip-text text-transparent my-4"><%= "#{current_user.name}さんのプロフィール一覧" %></h1>
+  <div class="py-2">
+    <h1 class="text-4xl font-bold bg-gradient-to-r to-purple-600 from-violet-500 bg-clip-text text-transparent mb-4"><%= "#{current_user.name}さんのプロフィール一覧" %></h1>
   </div>
   <div class="py-1">
     <%= link_to "#{t.name}さんのプロフィール（#{t.created_at}）", profile_path(t.public_uid), class: "underline" %>
@@ -13,4 +13,16 @@
     <% end %>
   </div>
 <% end %>
+
+<% if user_signed_in? %> 
 <div class="p-4">
+  <div class="text-center mt-3 mb-4 w-full max-w-md">
+    <!-- メインボタン -->
+    <div class="text-center mb-2 sm:mb-3 w-full max-w-md">
+      <%= link_to t('profiles.new.main_title'), new_profile_path, class: "w-full sm:w-auto inline-block bg-gradient-to-r from-violet-300 to-purple-300 hover:from-purple-400 hover:to-pink-400 text-purple-800 hover:text-white font-bold text-sm sm:text-base py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl shadow-md transform transition-all duration-300 no-underline" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+</div>
