@@ -1,8 +1,10 @@
 <div class="p-8">
-<% @profiles.each do |t| %>
+  <% if user_signed_in? %>
   <div class="py-2">
     <h1 class="text-4xl font-bold bg-gradient-to-r to-purple-600 from-violet-500 bg-clip-text text-transparent mb-4"><%= "#{current_user.name}さんのプロフィール一覧" %></h1>
   </div>
+  <% end %>
+<% @profiles.each do |t| %>
   <div class="py-1">
     <%= link_to "#{t.name}さんのプロフィール（#{t.created_at}）", profile_path(t.public_uid), class: "underline" %>
     <%if user_signed_in? %>

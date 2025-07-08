@@ -1,4 +1,4 @@
-<div class="relative z-10 container mx-auto px-4 md:px-6 py-6 md:py-10">
+<div class="h-full relative z-10 container mx-auto px-4 md:px-6 py-6 md:py-10">
   <!-- タイトル -->
   <div class="text-center my-8 md:my-12">
       <h1 class="text-2xl md:text-4xl font-bold text-purple-800 mb-4 drop-shadow-sm">
@@ -9,7 +9,7 @@
   </div>
 
   <!-- メインコンテンツカード -->
-  <div class="max-w-4xl mx-auto space-y-6 md:space-y-8">
+  <div class="h-full max-w-4xl mx-auto space-y-6 md:space-y-8">
       <!-- はじめにセクション -->
       <div class="backdrop-blur-md bg-white/90 rounded-2xl md:rounded-3xl shadow-xl border-2 border-pink-200 p-4 md:p-8">
           <h2 class="text-xl md:text-2xl font-bold text-purple-800 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
@@ -22,7 +22,7 @@
       </div>
 
       <!-- 使い方セクション -->
-      <div class="backdrop-blur-md bg-white/90 rounded-2xl md:rounded-3xl shadow-xl border-2 border-pink-200 p-4 md:p-8">
+      <div class="h-auto backdrop-blur-md bg-white/90 rounded-2xl md:rounded-3xl shadow-xl border-2 border-pink-200 p-4 md:p-8">
           <h2 class="text-xl md:text-2xl font-bold text-purple-800 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
               <span class="text-lg md:text-xl">💖</span>
               使い方
@@ -84,7 +84,7 @@
       </div>
 
       <!-- 戻るボタン -->
-      <div class="text-center pb-8 md:pb-16">
+      <div class="h-auto text-center pb-8 md:pb-16">
           <%= link_to root_path, class:"inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 active:scale-95" do %>
               <span class="text-lg md:text-xl">🏠</span>
               <span><%= t('pages.about.back_home') %></span>

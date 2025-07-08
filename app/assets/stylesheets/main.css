@@ -1,5 +1,17 @@
+/* 確実なメニュー表示のための強制CSS */
 * {
     box-sizing: border-box !important;
+}
+
+/* ヘッダー高さのCSS変数定義 */
+:root {
+    --header-height: 4rem; /* 64px */
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --header-height: 5rem; /* 80px */
+    }
 }
 
 /* グラデーションテキスト */
@@ -78,4 +90,13 @@
 #mobileMenu a {
     display: flex !important;
     align-items: center !important;
+}
+
+/* ヘッダーを除いた高さのユーティリティクラス */
+.h-screen-minus-header {
+    height: calc(100vh - var(--header-height)) !important;
+}
+
+.min-h-screen-minus-header {
+    min-height: calc(100vh - var(--header-height)) !important;
 }
