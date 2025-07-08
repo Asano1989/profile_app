@@ -33,7 +33,7 @@ Rails.application.configure do
   config.assets.digest = true
 
   # アセットを明示的にプリコンパイルしておく
-  config.assets.precompile += %w( application.css tailwind.css social-share-button.css )
+  config.assets.precompile += %w( application.css application.js )
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"

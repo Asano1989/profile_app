@@ -13,13 +13,11 @@
     <%= favicon_link_tag(source='/favicon.ico') %>
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "social-share-button", media: "all", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
-    <%= javascript_include_tag "social-share-button", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true  %>
   </head>
 
   <body class="min-h-screen bg-gradient-to-br from-pink-200 via-pink-100 to-purple-200" data-turbo="false">
-    <%= render 'shared/header' %>
+    <%= render "shared/header" %>
 
     <main class="h-[calc(100vh-4rem)]">
       <%= render partial: "shared/messages" %>
