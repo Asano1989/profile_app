@@ -1,6 +1,6 @@
 <% content_for(:title, t('.main_title', name: @profile.name ) ) %>
 
-<div class="min-h-screen bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-4">
+<div class="min-h-screen-minus-header bg-gradient-to-br from-purple-200 via-pink-200 to-purple-300 p-2 sm:p-4 md:p-6">
 
   <% if notice %>
   <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
@@ -8,259 +8,275 @@
   </div>
   <% end %>
 
-  <!-- 装飾的な背景要素 -->
+  <!-- 装飾的な背景要素 - レスポンシブ対応 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-10 left-10 text-pink-300 opacity-60">
-      <span class="text-2xl">⭐</span>
+    <div class="absolute top-4 left-4 sm:top-8 sm:left-8 md:top-10 md:left-10 text-pink-300 opacity-60">
+      <span class="text-lg sm:text-xl md:text-2xl">⭐</span>
     </div>
-    <div class="absolute top-20 right-20 text-purple-300 opacity-60">
-      <span class="text-xl">💖</span>
+    <div class="absolute top-8 right-4 sm:top-12 sm:right-8 md:top-20 md:right-20 text-purple-300 opacity-60">
+      <span class="text-base sm:text-lg md:text-xl">💖</span>
     </div>
-    <div class="absolute top-40 left-1/4 text-pink-300 opacity-40">
-      <span class="text-base">✨</span>
+    <div class="absolute top-20 left-1/4 sm:top-32 md:top-40 text-pink-300 opacity-40">
+      <span class="text-sm sm:text-base">✨</span>
     </div>
-    <div class="absolute top-60 right-1/3 text-purple-300 opacity-50">
-      <span class="text-lg">🌙</span>
+    <div class="absolute top-32 right-1/3 sm:top-48 md:top-60 text-purple-300 opacity-50">
+      <span class="text-base sm:text-lg">🌙</span>
     </div>
-    <div class="absolute bottom-40 left-20 text-pink-300 opacity-60">
-      <span class="text-xl">☀️</span>
+    <div class="absolute bottom-32 left-4 sm:bottom-40 sm:left-8 md:left-20 text-pink-300 opacity-60">
+      <span class="text-lg sm:text-xl">☀️</span>
     </div>
-    <div class="absolute bottom-20 right-10 text-purple-300 opacity-40">
-      <span class="text-xl">⭐</span>
+    <div class="absolute bottom-8 right-4 sm:bottom-12 sm:right-8 md:bottom-20 md:right-10 text-purple-300 opacity-40">
+      <span class="text-lg sm:text-xl">⭐</span>
     </div>
   </div>
 
-    <div class="max-w-2xl mx-auto relative z-10">
-    <div class="text-center my-8">
-      <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent my-4">
+  <div class="max-w-4xl mx-auto relative z-10">
+    <!-- ヘッダー部分 -->
+    <div class="text-center my-4 sm:my-6 md:my-8">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent my-2 sm:my-3 md:my-4 px-2">
         ✨ <%= t('.main_title', name: @profile.name ) %> ✨
       </h1>
-      <div class="flex justify-center gap-2 text-2xl">
+      <div class="flex justify-center gap-2 text-lg sm:text-xl md:text-2xl">
         <span class="text-pink-400">💖</span>
         <span class="text-purple-400">✨</span>
         <span class="text-pink-400">💖</span>
       </div>
     </div>
 
-    <div class="backdrop-blur-sm bg-white/80 border-0 shadow-xl rounded-3xl">
-      <div class="space-y-8 p-8">
-        <!-- 名前 -->
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">💖</span>
-            <span>わたしの<%= t('views.profile.name') %>は<%= @profile.name %>です！</span>
+    <!-- メインコンテンツカード -->
+    <div class="backdrop-blur-sm bg-white/80 border-0 shadow-xl rounded-2xl sm:rounded-3xl">
+      <div class="space-y-4 sm:space-y-6 md:space-y-8 p-4 sm:p-6 md:p-8">
+        
+        <!-- 基本情報セクション -->
+        <div class="px-6 sm:px-3 space-y-3 sm:space-y-4">
+          <!-- 名前 -->
+          <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">💖</span>
+            <span class="break-words">わたしの<%= t('views.profile.name') %>は<%= @profile.name %>！</span>
           </div>
-        </div>
 
-        <!-- ニックネーム -->
-        <% if @profile.nickname.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">✨</span>
-            <span><%= t('views.profile.nickname') %>、<%= @profile.nickname %>って呼ばれています。</span>
+          <!-- ニックネーム -->
+          <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">✨</span>
+            <span class="break-words"><%= t('views.profile.nickname') %>、<%= @profile.nickname %>って呼ばれています。</span>
           </div>
-        </div>
-        <% end %>
 
-        <!-- 誕生日 -->
-        <% if @profile.birth_month.present? || @profile.birth_day.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">⭐</span>
-            <span><%= t('views.profile.birth_day') %>は<%= @profile.birth_month %>月<%= @profile.birth_day %>日だよ！</span>
+          <!-- 誕生日 -->
+          <div class="flex flex-wrap items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">⭐</span>
+            <span class="break-words">
+            <%= t('views.profile.birth_day') %>は<%= @profile.birth_month %>月<%= @profile.birth_day %>日だよ！</span>
+            <span class="break-words"><%= t('views.profile.constellation') %>は<%= @profile.constellation %>💓</span>
+          </div>
 
-          <% if @profile.constellation.present? %>
-            <% if @profile.birth_month.blank? && @profile.birth_day.blank? %>
-              <div class="space-y-3">
-                <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <% end %>
-            <!-- 星座 -->
-            <span><%= t('views.profile.constellation') %>は<%= @profile.constellation %>💓</span>
+          <!-- 出身地 -->
+          <% if @profile.birthplace.present? %>
+            <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+              <span class="text-pink-500 flex-shrink-0">☀️</span>
+              <span class="break-words"><%= t('views.profile.birthplace') %>は<%= @profile.birthplace %>！</span>
+            </div>
           <% end %>
-          </div>
-        </div>
-        <% end %>
 
-        <!-- 出身地 -->
-        <% if @profile.birthplace.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">☀️</span>
-            <span><%= t('views.profile.birthplace') %>は<%= @profile.birthplace %>！</span>
-          </div>
-        </div>
-        <% end %>
+          <!-- 性格 -->
+          <% if @profile.personality_main.present? || @profile.personality_sub.present? %>
+            <div class="flex flex-wrap items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+              <span class="text-pink-500 flex-shrink-0">💖</span>
+              <span class="break-words"><%= t('views.profile.personality') %>は<%= @profile.personality_main %><% if @profile.personality_main.present? && @profile.personality_sub.present? %>で<% end %><%= @profile.personality_sub %></span>
+              <span class="break-words">……と、自分では思っているよ😁</span>
+            </div>
+          <% end %>
 
-        <!-- 性格 -->
-        <% if @profile.personality_main.present? || @profile.personality_sub.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">💖</span>
-            <span><%= t('views.profile.personality') %>は<%= @profile.personality_main %><% if @profile.personality_main.present? && @profile.personality_sub.present? %>で<% end %><%= @profile.personality_sub %></span>
-            <span>……と、自分では思っているよ😁</span>
-          </div>
-        </div>
-        <% end %>
+          <!-- 人からの評価 -->
+          <% if @profile.evaluation_others.present? %>
+            <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+              <span class="text-pink-500 flex-shrink-0">✨</span>
+              <span class="break-words"><%= t('views.profile.evaluation_others') %><%= @profile.evaluation_others %>って言われることがあるよ。</span>
+            </div>
+          <% end %>
 
-        <!-- 人からの評価 -->
-        <% if @profile.evaluation_others.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">✨</span>
-            <span><%= t('views.profile.evaluation_others') %><%= @profile.evaluation_others %>って言われることがあるよ。</span>
+          <!-- 趣味・マイブーム -->
+          <% if @profile.hobby_or_interest.present? %>
+          <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">⭐</span>
+            <span class="break-words"><%= t('views.profile.hobby_or_interest') %>は<%= @profile.hobby_or_interest %>✨</span>
           </div>
+          <% end %>
         </div>
-        <% end %>
 
-        <!-- 趣味・マイブーム -->
-        <% if @profile.hobby_or_interest.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">⭐</span>
-            <span><%= t('views.profile.hobby_or_interest') %>は<%= @profile.hobby_or_interest %>✨</span>
-          </div>
-        </div>
-        <% end %>
-
-        <!-- 好きなもの -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 好きなものセクション -->
+        <div class="favorites-grid px-4 sm:px-3">
           <% if @profile.favorite_food.present? %>
-            <div class="space-y-3">
-              <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('views.profile.favorite_food') %></span> 🍙
-              </div>
+          <div class="space-y-2 sm:space-y-3">
+            <div class="text-purple-700 font-medium flex items-center gap-2 text-sm sm:text-base">
+              <span><%= t('views.profile.favorite_food') %></span> 
+              <span class="text-lg">🍙</span>
+            </div>
+            <div class="text-purple-600 text-sm sm:text-base break-words pl-4">
               <%= @profile.favorite_food %>
             </div>
+          </div>
           <% end %>
+
           <% if @profile.favorite_drink.present? %>
-            <div class="space-y-3">
-              <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('views.profile.favorite_drink') %></span> ☕
-              </div>
+          <div class="space-y-2 sm:space-y-3">
+            <div class="text-purple-700 font-medium flex items-center gap-2 text-sm sm:text-base">
+              <span><%= t('views.profile.favorite_drink') %></span> 
+              <span class="text-lg">☕</span>
+            </div>
+            <div class="text-purple-600 text-sm sm:text-base break-words pl-4">
               <%= @profile.favorite_drink %>
             </div>
+          </div>
           <% end %>
+
           <% if @profile.favorite_artist.present? %>
-            <div class="space-y-3">
-              <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('views.profile.favorite_artist') %></span> 🖼
-              </div>
+          <div class="space-y-2 sm:space-y-3">
+            <div class="text-purple-700 font-medium flex items-center gap-2 text-sm sm:text-base">
+              <span><%= t('views.profile.favorite_artist') %></span> 
+              <span class="text-lg">🖼</span>
+            </div>
+            <div class="text-purple-600 text-sm sm:text-base break-words pl-4">
               <%= @profile.favorite_artist %>
             </div>
+          </div>
           <% end %>
+          
           <% if @profile.favorite_book.present? %>
-            <div class="space-y-3">
-              <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('views.profile.favorite_book') %></span> 📚
-              </div>
+          <div class="space-y-2 sm:space-y-3">
+            <div class="text-purple-700 font-medium flex items-center gap-2 text-sm sm:text-base">
+              <span><%= t('views.profile.favorite_book') %></span> 
+              <span class="text-lg">📚</span>
+            </div>
+            <div class="text-purple-600 text-sm sm:text-base break-words pl-4">
               <%= @profile.favorite_book %>
             </div>
-          <% end %>
+          </div>
+          <% end %>          
+
           <% if @profile.favorite_movie.present? %>
-            <div class="space-y-3">
-              <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('views.profile.favorite_movie') %></span> 🎬
-              </div>
+          <div class="space-y-2 sm:space-y-3">
+            <div class="text-purple-700 font-medium flex items-center gap-2 text-sm sm:text-base">
+              <span><%= t('views.profile.favorite_movie') %></span> 
+              <span class="text-lg">🎬</span>
+            </div>
+            <div class="text-purple-600 text-sm sm:text-base break-words pl-4">
               <%= @profile.favorite_movie %>
             </div>
+          </div>
           <% end %>
+
           <% if @profile.favorite_anime_game.present? %>
-            <div class="space-y-3">
-              <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('views.profile.favorite_anime_game') %></span> 📺
-              </div>
+          <div class="space-y-2 sm:space-y-3">
+            <div class="text-purple-700 font-medium flex items-center gap-2 text-sm sm:text-base">
+              <span><%= t('views.profile.favorite_anime_game') %></span> 
+              <span class="text-lg">📺</span>
+            </div>
+            <div class="text-purple-600 text-sm sm:text-base break-words pl-4">
               <%= @profile.favorite_anime_game %>
             </div>
+          </div>
           <% end %>
+          
           <% if @profile.favorite_place.present? %>
-            <div class="space-y-3">
-              <div class="text-purple-700 font-medium flex items-center gap-2">
-                <span><%= t('views.profile.favorite_place') %></span> 🌳
-              </div>
+          <div class="space-y-2 sm:space-y-3">
+            <div class="text-purple-700 font-medium flex items-center gap-2 text-sm sm:text-base">
+              <span><%= t('views.profile.favorite_place') %></span> 
+              <span class="text-lg">🌳</span>
+            </div>
+            <div class="text-purple-600 text-sm sm:text-base break-words pl-4">
               <%= @profile.favorite_place %>
             </div>
+          </div>
+          <% end %>
+
+        </div>
+
+        <!-- その他の情報セクション -->
+        <% if @profile.special_skill.present? %>
+        <div class="px-4 sm:px-3 space-y-3 sm:space-y-4">
+          <!-- 特技 -->
+          <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">💖</span>
+            <span class="break-words">わたしの<%= t('views.profile.special_skill') %>は<%= @profile.special_skill %>です！</span>
+          </div>
+          <% end %>
+
+          <!-- ほしいもの -->
+          <% if @profile.things_i_want.present? %>
+          <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">✨</span>
+            <span class="break-words">今<%= t('views.profile.things_i_want') %>は<%= @profile.things_i_want %></span>
+          </div>
+          <% end %>
+
+          <!-- 将来の夢 -->
+          <% if @profile.future_dream.present? %>
+          <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">⭐</span>
+            <span class="break-words"><%= t('views.profile.future_dream') %>：<%= @profile.future_dream %></span>
+          </div>
+          <% end %>
+
+          <!-- 座右の銘 -->
+          <% if @profile.motto.present? %>
+          <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
+            <span class="text-pink-500 flex-shrink-0">🌙</span>
+            <span class="break-words"><%= t('views.profile.motto') %>は「<%= @profile.motto %>」！</span>
+          </div>
           <% end %>
         </div>
 
-        <!-- 特技 -->
-        <% if @profile.special_skill.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">💖</span>
-            <span>わたしの<%= t('views.profile.special_skill') %>は<%= @profile.special_skill %>です！</span>
-          </div>
-        </div>
-        <% end %>
-
-        <!-- ほしいもの -->
-        <% if @profile.things_i_want.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">✨</span>
-            <span>今<%= t('views.profile.things_i_want') %>は<%= @profile.things_i_want %>。</span>
-          </div>
-        </div>
-        <% end %>
-
-        <!-- 将来の夢 -->
-        <% if @profile.future_dream.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">⭐</span>
-            <span><%= t('views.profile.future_dream') %>：<%= @profile.future_dream %></span>
-          </div>
-        </div>
-        <% end %>
-
-        <!-- 座右の銘 -->
-        <% if @profile.motto.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
-            <span class="text-pink-500">🌙</span>
-            <span><%= t('views.profile.motto') %>は「<%= @profile.motto %>」！</span>
-          </div>
-        </div>
-        <% end %>
-
-        <!-- メッセージ -->
+        <!-- メッセージセクション -->
         <% if @profile.free_message.present? %>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 text-purple-700 font-medium">
+        <div class="space-y-3 sm:space-y-4 px-4 sm:px-3">
+          <div class="flex items-center gap-2 text-purple-700 font-medium text-sm sm:text-base">
             <span class="text-pink-500">💖</span>
             <span><%= t('views.profile.free_message') %></span>
           </div>
-        
-          <div class="backdrop-blur-sm bg-white-100 border-0 shadow-l rounded-3xl">
-            <div class="text-black-700 font-medium p-6 break-words leading-relaxed">
+          
+          <div class="backdrop-blur-sm bg-white/60 border-0 shadow-lg rounded-2xl sm:rounded-3xl">
+            <div class="text-purple-700 font-medium p-4 sm:p-6 break-words leading-relaxed text-sm sm:text-base">
               <span><%= simple_format(@profile.free_message) %></span>
             </div>
           </div>
-        </div>
+
         <% end %>
-        
-        <div class="flex justify-between items-center px-2">
+        </div>
+
+        <!-- ボタンセクション - レスポンシブレイアウト -->
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-4 pt-4 sm:pt-6">
           <!-- SNSシェアボタン -->
-          <div class="flex items-end">
-            <%= render partial: "shared/share_button" %>
+          <div class="flex items-center justify-center lg:justify-start order-2 lg:order-1">
+            <%= render 'shared/share_button' %>
           </div>
 
           <!-- 編集・削除ボタン -->
-          <div class="flex items-center">
-            <% if user_signed_in? %>
-              <span class="px-2"><%= link_to t('.edit'), edit_profile_path(@profile.public_uid),
-                  class: "inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-sm py-2 px-4 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %></span>
-              <span class="px-1"><%= link_to t('.destroy'), profile_path(@profile.public_uid), method: :delete, data: { confirm: "#{@profile.name}さんのプロフィールを削除してもよろしいですか？" },
-                  class: "inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-red-500 hover:to-pink-600 text-white font-bold text-sm py-2 px-4 rounded-2xl shadow-md transform transition-all duration-300 hover:scale-110 no-underline" %></span>
+          <% if user_signed_in? %>
+          <div class="flex flex-row items-center gap-3 py-4 order-1 lg:order-2 w-full lg:w-auto justify-center lg:justify-end">
+            <%= link_to edit_profile_path(@profile), class: "flex-1 lg:flex-none inline-block bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white font-bold text-sm py-2 px-4 sm:px-6 rounded-xl sm:rounded-2xl shadow-md transform transition-all duration-300 hover:scale-105 active:scale-95 no-underline text-center" do %>
+              <span class="flex items-center justify-center gap-2">
+                <span>✏️</span>
+                <span>編集</span>
+              </span>
+            <% end %>
+            
+            <%= link_to profile_path(@profile), method: :delete, 
+                confirm: "#{@profile.name}さんのプロフィールを削除してもよろしいですか？",
+                class: "flex-1 lg:flex-none inline-block bg-gradient-to-r from-red-400 to-pink-500 hover:from-red-500 hover:to-pink-600 text-white font-bold text-sm py-2 px-4 sm:px-6 rounded-xl sm:rounded-2xl shadow-md transform transition-all duration-300 hover:scale-105 active:scale-95 no-underline text-center" do %>
+              <span class="flex items-center justify-center gap-2">
+                <span>🗑️</span>
+                <span>削除</span>
+              </span>
             <% end %>
           </div>
+          <% end %>
         </div>
-
       </div>
     </div>
 
     <!-- フッター装飾 -->
-    <div class="text-center mt-8 text-purple-600 opacity-70">
-      <div class="flex justify-center gap-2 text-2xl mb-2">
+    <div class="text-center mt-4 sm:mt-6 md:mt-8 text-purple-600 opacity-70">
+      <div class="flex justify-center gap-2 text-lg sm:text-xl md:text-2xl mb-2">
         <span>⭐</span>
         <span>💖</span>
         <span>✨</span>

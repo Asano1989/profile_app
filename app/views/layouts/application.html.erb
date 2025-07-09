@@ -7,6 +7,12 @@
     <meta property="og:url"           content="<%= request.url %>" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="<%= page_title %>" />
+    <meta property="og:description"   content="懐かしの「プロフィール帳」をwebで作って共有しよう！"/>
+    <meta property="og:image"         content="<%= image_url('/ogp.png') %>"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= page_title %>">
+    <meta name="twitter:description" content="懐かしの「プロフィール帳」をwebで作って共有しよう！">
+    <meta name="twitter:image" content="<%= image_url('/ogp.png') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
