@@ -102,4 +102,5 @@ Rails.application.configure do
     end
   end
   Rails.application.config.hosts << /.*\.asano1989\.info/
+  Rails.application.config.hosts << /.*\.asnpp\.com/
 end
