@@ -274,7 +274,7 @@
 
           <!-- 送信ボタン -->
           <div class="text-center">
-            <%= form.submit class: "bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 px-12 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 cursor-pointer" %>
+            <%= form.button t('helpers.submit.profile.create'), class: "bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 px-12 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 cursor-pointer", type: 'button', onclick: 'submit();' %>
           </div>
         <% end %>
       </div>

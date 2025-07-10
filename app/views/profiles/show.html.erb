@@ -56,18 +56,26 @@
           </div>
 
           <!-- ニックネーム -->
+          <% if @profile.nickname.present? %>
           <div class="flex items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
             <span class="text-pink-500 flex-shrink-0">✨</span>
             <span class="break-words"><%= t('views.profile.nickname') %>、<%= @profile.nickname %>って呼ばれています。</span>
           </div>
+          <% end %>
 
           <!-- 誕生日 -->
+          <% if @profile.birth_month.present? || @profile.birth_day.present? || @profile.constellation.present? %>
           <div class="flex flex-wrap items-start gap-2 text-purple-700 font-medium text-sm sm:text-base">
-            <span class="text-pink-500 flex-shrink-0">⭐</span>
-            <span class="break-words">
-            <%= t('views.profile.birth_day') %>は<%= @profile.birth_month %>月<%= @profile.birth_day %>日だよ！</span>
-            <span class="break-words"><%= t('views.profile.constellation') %>は<%= @profile.constellation %>💓</span>
+            <% if @profile.birth_month.present? && @profile.birth_day.present? %>
+              <span class="text-pink-500 flex-shrink-0">⭐</span>
+              <span class="break-words">
+              <%= t('views.profile.birth_day') %>は<%= @profile.birth_month %>月<%= @profile.birth_day %>日だよ！</span>
+            <% end %>
+            <% if @profile.constellation.present? %>
+              <span class="break-words"><%= t('views.profile.constellation') %>は<%= @profile.constellation %>💓</span>
+            <% end %>
           </div>
+          <% end %>
 
           <!-- 出身地 -->
           <% if @profile.birthplace.present? %>
