@@ -101,6 +101,6 @@ Rails.application.configure do
       config.hosts << host.strip
     end
   end
-  Rails.application.config.hosts << /.*\.h73a\.com/
-  Rails.application.config.hosts << /.*\.asnpp\.com/
+  config.hosts << "profile-app.h73a.com"
+  config.hosts << /.*\.asnpp\.com/
 end
