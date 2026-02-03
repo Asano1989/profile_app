@@ -23,7 +23,7 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RENDER"].present?
 
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = nil
@@ -33,7 +33,7 @@ Rails.application.configure do
   config.assets.digest = true
 
   # アセットを明示的にプリコンパイルしておく
-  config.assets.precompile += %w( application.css application.js )
+  config.assets.precompile += %w[application.css application.js]
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
